@@ -12,6 +12,13 @@ const { LatLng, LatLngBounds } = sdkTypes;
 //       1) help customers to find relevant locations, and
 //       2) reduce the cost of using map providers geocoding API
 const defaultLocations = [
+  {
+    id: 'default-auckland',
+    predictionPlace: {
+      address: 'Auckland, New Zealand',
+      bounds: new LatLngBounds(new LatLng(-36.545, 175.298), new LatLng(-37.047,174.498)),
+    },
+  },
   // {
   //   id: 'default-helsinki',
   //   predictionPlace: {
