@@ -101,6 +101,7 @@ const OrderPanel = props => {
     marketplaceName,
     fetchLineItemsInProgress,
     fetchLineItemsError,
+    sectionLikes,
   } = props;
 
   const transactionProcessAlias = listing?.attributes?.publicData?.transactionProcessAlias || '';
@@ -184,6 +185,7 @@ const OrderPanel = props => {
         <div className={css.orderHeading}>
           {titleDesktop ? titleDesktop : <H2 className={titleClasses}>{title}</H2>}
           {subTitleText ? <div className={css.orderHelp}>{subTitleText}</div> : null}
+          {sectionLikes}
         </div>
 
         {price ? (

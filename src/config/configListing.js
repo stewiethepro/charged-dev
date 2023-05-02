@@ -176,31 +176,31 @@ export const listingFields = [
       requiredMessage: 'You need to select whether access is restricted.',
     },
   },
-  {
-    key: 'accessories',
-    scope: 'public',
-    schemaType: 'multi-enum',
-    enumOptions: [
-      { option: 'bell', label: 'Bell' },
-      { option: 'lights', label: 'Lights' },
-      { option: 'lock', label: 'Lock' },
-      { option: 'mudguard', label: 'Mudguard' },
-    ],
-    filterConfig: {
-      indexForSearch: true,
-      label: 'Accessories',
-      searchMode: 'has_all',
-      group: 'secondary',
-    },
-    showConfig: {
-      label: 'Accessories',
-    },
-    saveConfig: {
-      label: 'Accessories',
-      placeholderMessage: 'Select an option…',
-      isRequired: false,
-    },
-  },
+  // {
+  //   key: 'accessories',
+  //   scope: 'public',
+  //   schemaType: 'multi-enum',
+  //   enumOptions: [
+  //     { option: 'bell', label: 'Bell' },
+  //     { option: 'lights', label: 'Lights' },
+  //     { option: 'lock', label: 'Lock' },
+  //     { option: 'mudguard', label: 'Mudguard' },
+  //   ],
+  //   filterConfig: {
+  //     indexForSearch: true,
+  //     label: 'Accessories',
+  //     searchMode: 'has_all',
+  //     group: 'secondary',
+  //   },
+  //   showConfig: {
+  //     label: 'Accessories',
+  //   },
+  //   saveConfig: {
+  //     label: 'Accessories',
+  //     placeholderMessage: 'Select an option…',
+  //     isRequired: false,
+  //   },
+  // },
 
   // // An example of how to use transaction type specific custom fields and private data.
   // {
@@ -266,15 +266,15 @@ export const listingFields = [
  */
 
 export const listingTypes = [
-  {
-    listingType: 'daily-booking',
-    label: 'Daily booking',
-    transactionType: {
-      process: 'default-booking',
-      alias: 'default-booking/release-1',
-      unitType: 'day',
-    },
-  },
+  // {
+  //   listingType: 'daily-booking',
+  //   label: 'Daily booking',
+  //   transactionType: {
+  //     process: 'default-booking',
+  //     alias: 'default-booking/release-1',
+  //     unitType: 'day',
+  //   },
+  // },
   // // Here are some examples for other listingTypes
   // // TODO: SearchPage does not work well if both booking and product selling are used at the same time
   // {
@@ -286,15 +286,15 @@ export const listingTypes = [
   //     unitType: 'night',
   //   },
   // },
-  // {
-  //   listingType: 'hourly-booking',
-  //   label: 'Hourly booking',
-  //   transactionType: {
-  //     process: 'default-booking',
-  //     alias: 'default-booking/release-1',
-  //     unitType: 'hour',
-  //   },
-  // },
+  {
+    listingType: 'hourly-booking',
+    label: 'Hourly booking',
+    transactionType: {
+      process: 'default-booking',
+      alias: 'default-booking/release-1',
+      unitType: 'hour',
+    },
+  },
   // {
   //   listingType: 'product-selling',
   //   label: 'Sell bicycles',
