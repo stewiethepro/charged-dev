@@ -2,6 +2,7 @@ import * as log from '../util/log';
 import { ensureTransaction } from '../util/data';
 import * as purchaseProcess from './transactionProcessPurchase';
 import * as bookingProcess from './transactionProcessBooking';
+import * as customerCancelProcess from './transactionProcessBookingCustomerCancel';
 
 // Supported unit types
 export const ITEM = 'item';
@@ -12,6 +13,8 @@ export const HOUR = 'hour';
 // Then names of supported processes
 export const PURCHASE_PROCESS_NAME = 'default-purchase';
 export const BOOKING_PROCESS_NAME = 'default-booking';
+export const CUSTOMER_CANCEL_BOOKING_PROCESS_NAME = 'chargemate-booking';
+
 
 /**
  * A process should export:
@@ -37,6 +40,12 @@ const PROCESSES = [
     name: BOOKING_PROCESS_NAME,
     alias: `${BOOKING_PROCESS_NAME}/release-1`,
     process: bookingProcess,
+    unitTypes: [DAY, NIGHT, HOUR],
+  },
+  {
+    name: CUSTOMER_CANCEL_BOOKING_PROCESS_NAME,
+    alias: `${CUSTOMER_CANCEL_BOOKING_PROCESS_NAME}/release-1`,
+    process: customerCancelProcess,
     unitTypes: [DAY, NIGHT, HOUR],
   },
 ];
@@ -257,7 +266,7 @@ export const getAllTransitionsForEveryProcess = () => {
 export const isBookingProcess = processName => {
   const latestProcessName = resolveLatestProcessName(processName);
   const processInfo = PROCESSES.find(process => process.name === latestProcessName);
-  return [BOOKING_PROCESS_NAME].includes(processInfo?.name);
+  return [BOOKING_PROCESS_NAME, CUSTOMER_CANCEL_BOOKING_PROCESS_NAME].includes(processInfo?.name);
 };
 
 /**

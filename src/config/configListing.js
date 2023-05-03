@@ -48,34 +48,9 @@
  */
 export const listingFields = [
   {
-    key: 'chargerType',
-    scope: 'public',
-    schemaType: 'enum',
-    enumOptions: [
-      { option: 'tethered', label: 'Tethered' },
-      { option: 'socketed', label: 'Socketed' },
-    ],
-    filterConfig: {
-      indexForSearch: true,
-      filterType: 'SelectMultipleFilter',
-      label: 'Charger Type',
-      group: 'primary',
-    },
-    showConfig: {
-      label: 'Charger Type',
-      isDetail: true,
-    },
-    saveConfig: {
-      label: 'Charger Type',
-      placeholderMessage: 'Select a charger type...',
-      isRequired: true,
-      requiredMessage: 'You need to select a charger type.',
-    },
-  },
-  {
     key: 'connectorType',
     scope: 'public',
-    schemaType: 'enum',
+    schemaType: 'multi-enum',
     enumOptions: [
       { option: 'type-1', label: 'Type 1' },
       { option: 'type-2', label: 'Type 2' },
@@ -84,15 +59,15 @@ export const listingFields = [
     filterConfig: {
       indexForSearch: true,
       filterType: 'SelectMultipleFilter',
+      searchMode: 'has_any',
       label: 'Connector Type',
       group: 'primary',
     },
     showConfig: {
       label: 'Connector Type',
-      isDetail: true,
     },
     saveConfig: {
-      label: 'Connector Type',
+      label: 'Connector Type(s)',
       placeholderMessage: 'Select a connector type...',
       isRequired: true,
       requiredMessage: 'You need to select a connector type.',
@@ -290,8 +265,8 @@ export const listingTypes = [
     listingType: 'hourly-booking',
     label: 'Hourly booking',
     transactionType: {
-      process: 'default-booking',
-      alias: 'default-booking/release-1',
+      process: 'chargemate-booking',
+      alias: 'chargemate-booking/release-1',
       unitType: 'hour',
     },
   },

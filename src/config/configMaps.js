@@ -45,7 +45,7 @@ export const search = {
   // Limit location autocomplete to a one or more countries
   // using ISO 3166 alpha 2 country codes separated by commas.
   // If you want to limit the autocomplete, uncomment this value:
-  // countryLimit: ['AU'],
+  countryLimit: ['NZ'],
 };
 
 // When fuzzy locations are enabled, coordinates on maps are
@@ -55,7 +55,7 @@ export const search = {
 // coordinates are still accessible in the HTTP requests and the
 // Redux store.
 export const fuzzy = {
-  enabled: false,
+  enabled: true,
 
   // Amount of maximum offset in meters that is applied to obfuscate
   // the original coordinates. The actual value is random, but the
@@ -68,5 +68,5 @@ export const fuzzy = {
   defaultZoomLevel: 13,
 
   // Color of the circle on the Map component.
-  circleColor: '#c0392b',
+  circleColor: '#43B5A5',
 };

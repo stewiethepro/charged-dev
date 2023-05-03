@@ -3,6 +3,7 @@ import {
   BOOKING_PROCESS_NAME,
   PURCHASE_PROCESS_NAME,
   resolveLatestProcessName,
+  isBookingProcess,
 } from '../../transactions/transaction';
 import { getStateDataForBookingProcess } from './TransactionPage.stateDataBooking.js';
 import { getStateDataForPurchaseProcess } from './TransactionPage.stateDataPurchase.js';
@@ -133,7 +134,7 @@ export const getStateData = (params, process) => {
 
   if (processName === PURCHASE_PROCESS_NAME) {
     return getStateDataForPurchaseProcess(params, processInfo());
-  } else if (processName === BOOKING_PROCESS_NAME) {
+  } else if (isBookingProcess(processName)) {
     return getStateDataForBookingProcess(params, processInfo());
   } else {
     return {};

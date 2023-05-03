@@ -66,9 +66,10 @@ const getItemQuantityAndLineItems = (orderData, publicData, currency) => {
  * @param {*} orderData should contain quantity
  */
 const getHourQuantityAndLineItems = orderData => {
-  const { bookingStart, bookingEnd } = orderData || {};
+  const { bookingStart, bookingEnd, bookingDisplayEnd } = orderData || {};
+  const end = bookingDisplayEnd ?? bookingEnd;
   const quantity =
-    bookingStart && bookingEnd ? calculateQuantityFromHours(bookingStart, bookingEnd) : null;
+  bookingStart && end ? calculateQuantityFromHours(bookingStart, end) : null;
 
   return { quantity, extraLineItems: [] };
 };
