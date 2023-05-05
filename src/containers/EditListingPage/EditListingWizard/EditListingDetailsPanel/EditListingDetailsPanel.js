@@ -8,7 +8,7 @@ import { EXTENDED_DATA_SCHEMA_TYPES, LISTING_STATE_DRAFT } from '../../../../uti
 import { isBookingProcessAlias } from '../../../../transactions/transaction';
 
 // Import shared components
-import { H3, ListingLink } from '../../../../components';
+import { H3, ListingLink, Button } from '../../../../components';
 
 // Import modules from this directory
 import ErrorMessage from './ErrorMessage';
@@ -218,6 +218,10 @@ const EditListingDetailsPanel = props => {
           />
         )}
       </H3>
+
+      <p className={css.description}>
+        Fill in some details about your charger. We've written a <a target='blank' href="http://www.google.com/">handy blog post</a> to help you understand what type of charger you have.
+      </p>
 
       {canShowEditListingDetailsForm ? (
         <EditListingDetailsForm
