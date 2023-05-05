@@ -75,3 +75,17 @@
     margin-top: 100px;
   }
 }
+
+.tip {
+  composes: h5 from global;
+
+  flex-shrink: 0;
+  color: var(--colorGrey300);
+  margin-top: 24px;
+  margin-bottom: 60px;
+
+  @media (--viewportLarge) {
+    margin-top: 0;
+    margin-bottom: 60px;
+  }
+}

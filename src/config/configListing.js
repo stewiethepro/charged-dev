@@ -71,6 +71,7 @@ export const listingFields = [
       placeholderMessage: 'Select a connector type...',
       isRequired: true,
       requiredMessage: 'You need to select a connector type.',
+      descriptionMessage:'If customers can plug in their own cable, you can select all of the options below. If customers have to use your cable, please select your cable\'s connector type.',
     },
   },
   {
@@ -98,6 +99,7 @@ export const listingFields = [
       placeholderMessage: 'Select a power output...',
       isRequired: true,
       requiredMessage: 'You need to select a power output.',
+      descriptionMessage:'If you plug your cable straight into a standard 3-pin wall socket then you can select 3kW. If you\'ve had a dedicated home charger installed then it\'s most likely 7kW but it might be more powerful. Don\'t worry about decimal places.',
     },
   },
   {
@@ -125,6 +127,7 @@ export const listingFields = [
       placeholderMessage: 'Select access type...',
       isRequired: true,
       requiredMessage: 'You need to select an access type.',
+      descriptionMessage:'Where is your charger located? If you want to describe it in more detail then you can use the listing description field above.',
     },
   },
   {
@@ -149,6 +152,7 @@ export const listingFields = [
       placeholderMessage: 'Is a key or access code required?',
       isRequired: true,
       requiredMessage: 'You need to select whether access is restricted.',
+      descriptionMessage:'Would a customer need to get either a key or an access code from you in order to get to the charger?',
     },
   },
   // {

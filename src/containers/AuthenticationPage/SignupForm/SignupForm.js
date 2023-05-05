@@ -94,6 +94,20 @@ const SignupFormComponent = props => (
               })}
               validate={validators.composeValidators(emailRequired, emailValid)}
             />
+            <FieldTextInput
+              className={css.password}
+              type="password"
+              id={formId ? `${formId}.password` : 'password'}
+              name="password"
+              autoComplete="new-password"
+              label={intl.formatMessage({
+                id: 'SignupForm.passwordLabel',
+              })}
+              placeholder={intl.formatMessage({
+                id: 'SignupForm.passwordPlaceholder',
+              })}
+              validate={passwordValidators}
+            />
             <div className={css.name}>
               <FieldTextInput
                 className={css.firstNameRoot}
@@ -133,19 +147,25 @@ const SignupFormComponent = props => (
               />
             </div>
             <FieldTextInput
-              className={css.password}
-              type="password"
-              id={formId ? `${formId}.password` : 'password'}
-              name="password"
-              autoComplete="new-password"
+              className={css.registration}
+              type="text"
+              id={formId ? `${formId}.registration` : 'registration'}
+              name="registration"
+              autoComplete="registration"
               label={intl.formatMessage({
-                id: 'SignupForm.passwordLabel',
+                id: 'SignupForm.registrationLabel',
               })}
               placeholder={intl.formatMessage({
-                id: 'SignupForm.passwordPlaceholder',
+                id: 'SignupForm.registrationPlaceholder',
               })}
-              validate={passwordValidators}
+              validate={validators.required(
+                intl.formatMessage({
+                  id: 'SignupForm.registrationRequired',
+                })
+              )}
+              description= "This helps charger owners know who to expect"
             />
+            
           </div>
 
           <div className={css.bottomWrapper}>

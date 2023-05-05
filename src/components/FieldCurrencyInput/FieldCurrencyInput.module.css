@@ -1,2 +1,7 @@
 .root {
 }
+
+.description {
+    font-size: small;
+    color: hsl(240 3% 50%);
+}

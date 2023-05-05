@@ -20,7 +20,7 @@ const createFilterOptions = options => options.map(o => ({ key: `${o.option}`, l
 const CustomFieldEnum = props => {
   const { name, fieldConfig, defaultRequiredMessage, intl } = props;
   const { enumOptions = [], saveConfig } = fieldConfig || {};
-  const { label, placeholderMessage, isRequired, requiredMessage } = saveConfig || {};
+  const { label, placeholderMessage, isRequired, requiredMessage, descriptionMessage } = saveConfig || {};
   const validateMaybe = isRequired
     ? { validate: required(requiredMessage || defaultRequiredMessage) }
     : {};
@@ -30,7 +30,7 @@ const CustomFieldEnum = props => {
   const filterOptions = createFilterOptions(enumOptions);
 
   return filterOptions ? (
-    <FieldSelect className={css.customField} name={name} id={name} label={label} {...validateMaybe}>
+    <FieldSelect className={css.customField} name={name} id={name} label={label} description={descriptionMessage} {...validateMaybe}>
       <option disabled value="">
         {placeholder}
       </option>
@@ -49,7 +49,7 @@ const CustomFieldEnum = props => {
 const CustomFieldMultiEnum = props => {
   const { name, fieldConfig, defaultRequiredMessage } = props;
   const { enumOptions = [], saveConfig } = fieldConfig || {};
-  const { label, isRequired, requiredMessage } = saveConfig || {};
+  const { label, isRequired, requiredMessage, descriptionMessage } = saveConfig || {};
   const validateMaybe = isRequired
     ? { validate: nonEmptyArray(requiredMessage || defaultRequiredMessage) }
     : {};
@@ -60,6 +60,7 @@ const CustomFieldMultiEnum = props => {
       id={name}
       name={name}
       label={label}
+      description={descriptionMessage}
       options={createFilterOptions(enumOptions)}
       {...validateMaybe}
     />

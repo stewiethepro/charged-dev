@@ -95,6 +95,7 @@ export const EditListingPricingFormComponent = props => (
               { id: 'EditListingPricingForm.pricePerProduct' },
               { unitType }
             )}
+            description={intl.formatMessage({ id: 'EditListingPricingForm.priceInputDescription' })}
             placeholder={intl.formatMessage({ id: 'EditListingPricingForm.priceInputPlaceholder' })}
             currencyConfig={appSettings.getCurrencyFormatting(marketplaceCurrency)}
             validate={priceValidators}

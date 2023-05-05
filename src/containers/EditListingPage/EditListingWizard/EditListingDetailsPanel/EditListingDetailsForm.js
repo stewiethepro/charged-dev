@@ -119,6 +119,7 @@ const AddListingFields = props => {
   const { listingType, listingFieldsConfig, intl } = props;
   const fields = listingFieldsConfig.reduce((pickedFields, fieldConfig) => {
     const { key, includeForListingTypes, schemaType, scope } = fieldConfig || {};
+    console.log(fieldConfig);
 
     const isKnownSchemaType = EXTENDED_DATA_SCHEMA_TYPES.includes(schemaType);
     const isTargetProcessAlias =
@@ -201,6 +202,7 @@ const EditListingDetailsFormComponent = props => (
             type="text"
             label={intl.formatMessage({ id: 'EditListingDetailsForm.title' })}
             placeholder={intl.formatMessage({ id: 'EditListingDetailsForm.titlePlaceholder' })}
+            description={intl.formatMessage({ id: 'EditListingDetailsForm.titleDescription' })}
             maxLength={TITLE_MAX_LENGTH}
             validate={composeValidators(required(titleRequiredMessage), maxLength60Message)}
             autoFocus={autoFocus}
@@ -212,6 +214,7 @@ const EditListingDetailsFormComponent = props => (
             className={css.description}
             type="textarea"
             label={intl.formatMessage({ id: 'EditListingDetailsForm.description' })}
+            description={intl.formatMessage({ id: 'EditListingDetailsForm.descriptionDescription' })}
             placeholder={intl.formatMessage({
               id: 'EditListingDetailsForm.descriptionPlaceholder',
             })}

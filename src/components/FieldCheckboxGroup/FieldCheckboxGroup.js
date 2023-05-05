@@ -20,6 +20,7 @@ const FieldCheckboxRenderer = props => {
     className,
     rootClassName,
     label,
+    description,
     optionLabelClassName,
     twoColumns,
     id,
@@ -33,7 +34,8 @@ const FieldCheckboxRenderer = props => {
 
   return (
     <fieldset className={classes}>
-      {label ? <legend>{label}</legend> : null}
+      {label ? <label>{label}</label> : null}
+      {description ? <h5 className={css.description}>{description}</h5> : null}
       <ul className={listClasses}>
         {options.map((option, index) => {
           const fieldId = `${id}.${option.key}`;
@@ -61,6 +63,7 @@ FieldCheckboxRenderer.defaultProps = {
   rootClassName: null,
   className: null,
   label: null,
+  description: null,
   twoColumns: false,
 };
 
@@ -69,6 +72,7 @@ FieldCheckboxRenderer.propTypes = {
   className: string,
   id: string.isRequired,
   label: node,
+  description: string,
   options: arrayOf(
     shape({
       key: string.isRequired,

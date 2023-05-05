@@ -63,6 +63,11 @@ const EditListingPricingPanel = props => {
           />
         )}
       </H3>
+
+      <p className={css.description}>
+      If you're not sure about how to price your charger, you can use our <a target='blank' href="http://www.google.com/">calculator</a> to find the right price.
+      </p>
+
       {priceCurrencyValid ? (
         <EditListingPricingForm
           className={css.form}

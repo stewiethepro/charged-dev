@@ -292,6 +292,13 @@ const validRequiredMessage = requiredMessage => {
   const validValue = isValid ? { requiredMessage } : {};
   return [isValid, validValue];
 };
+const validDescriptionMessage = descriptionMessage => {
+  const isUndefined = typeof descriptionMessage === 'undefined';
+  const isString = typeof descriptionMessage === 'string';
+  const isValid = isUndefined || isString;
+  const validValue = isValid ? { descriptionMessage } : {};
+  return [isValid, validValue];
+};
 
 const validSaveConfig = config => {
   const isUndefined = typeof config === 'undefined';
@@ -305,14 +312,17 @@ const validSaveConfig = config => {
   );
   const [isValidIsRequired, isRequired] = validBoolean('isRequired', config.isRequired, false);
   const [isValidRequiredMessage, requiredMessage] = validRequiredMessage(config.requiredMessage);
+  
+  const [isValidDescriptionMessage, descriptionMessage] = validDescriptionMessage(config.descriptionMessage);
 
-  const isValid = isValidLabel && isValidPlaceholder && isValidIsRequired && isValidRequiredMessage;
+  const isValid = isValidLabel && isValidPlaceholder && isValidIsRequired && isValidRequiredMessage && isValidDescriptionMessage;
   const validValue = {
     saveConfig: {
       ...label,
       ...placeholderMessage,
       ...isRequired,
       ...requiredMessage,
+      ...descriptionMessage
     },
   };
   return [isValid, validValue];

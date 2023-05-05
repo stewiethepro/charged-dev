@@ -37,3 +37,8 @@
 .modalMessage {
   composes: marketplaceModalParagraphStyles from global;
 }
+
+.description {
+  margin-top: 0px;
+  margin-bottom: 60px;
+}

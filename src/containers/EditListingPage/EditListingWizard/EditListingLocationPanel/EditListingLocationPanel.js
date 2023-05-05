@@ -69,6 +69,11 @@ const EditListingLocationPanel = props => {
           />
         )}
       </H3>
+
+      <p className={css.description}>
+        Start typing in the box below to search for your address.
+      </p>
+
       <EditListingLocationForm
         className={css.form}
         initialValues={state.initialValues}

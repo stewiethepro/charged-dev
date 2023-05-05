@@ -4,3 +4,8 @@
 .selectError {
   border: var(--borderErrorField);
 }
+
+.description {
+  font-size: small;
+  color: hsl(240 3% 50%);
+}

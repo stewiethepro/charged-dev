@@ -54,6 +54,11 @@ const EditListingPhotosPanel = props => {
           />
         )}
       </H3>
+
+      <p className={css.description}>
+      Upload some photos of your charger and any cables so that people can see where it is and what type of charger it is.
+      </p>
+
       <EditListingPhotosForm
         className={css.form}
         disabled={disabled}

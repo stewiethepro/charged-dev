@@ -12,6 +12,7 @@ const FieldTextInputComponent = props => {
   const {
     rootClassName,
     className,
+    description,
     inputRootClass,
     customErrorText,
     id,
@@ -81,6 +82,7 @@ const FieldTextInputComponent = props => {
   return (
     <div className={classes}>
       {label ? <label htmlFor={id}>{label}</label> : null}
+      {description ? <h5 className={css.description}>{description}</h5> : null}
       {isTextarea ? <ExpandingTextarea {...inputProps} /> : <input {...inputProps} />}
       {hideErrorMessage ? null : <ValidationError fieldMeta={fieldMeta} />}
     </div>
@@ -90,6 +92,7 @@ const FieldTextInputComponent = props => {
 FieldTextInputComponent.defaultProps = {
   rootClassName: null,
   className: null,
+  description: null,
   inputRootClass: null,
   onUnmount: null,
   customErrorText: null,
@@ -114,6 +117,9 @@ FieldTextInputComponent.propTypes = {
   // the label can reference the input in the `for` attribute
   id: string,
   label: string,
+
+  // Description is a custom prop created to describe the field (created by Chargemate dev)
+  description: string,
 
   // Uncontrolled input uses defaultValue prop, but doesn't pass value from form to the field.
   // https://reactjs.org/docs/uncontrolled-components.html#default-values

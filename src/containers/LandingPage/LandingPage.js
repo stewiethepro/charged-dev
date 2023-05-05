@@ -11,13 +11,29 @@ import PageBuilder from '../../containers/PageBuilder/PageBuilder';
 import FallbackPage from './FallbackPage';
 import { ASSET_NAME } from './LandingPage.duck';
 
+import SectionFeaturesLandingHero from '../PageBuilder/SectionBuilder/SectionFeaturesLandingHero';
+import BlockDefaultLandingHero from '../PageBuilder/BlockBuilder/BlockDefaultLandingHero';
+
+
 export const LandingPageComponent = props => {
   const { pageAssetsData, inProgress, error } = props;
+
+  const sectionOverrides = {
+    features: { component: SectionFeaturesLandingHero },
+  };
+
+  const blockOverrides = {
+    defaultBlock: { component: BlockDefaultLandingHero },
+  };
 
   return (
     <PageBuilder
       pageAssetsData={pageAssetsData?.[camelize(ASSET_NAME)]?.data}
       inProgress={inProgress}
+      options={{
+        sectionComponents: sectionOverrides, 
+        blockComponents: blockOverrides
+      }}
       error={error}
       fallbackPage={<FallbackPage error={error} />}
     />
