@@ -1512,7 +1512,7 @@ textarea {
 }
 
 #hero-block-mobile {
-  margin-top: 35%;
+  margin: 30% auto;
   max-width: 80%;
   text-align: center;
 }
