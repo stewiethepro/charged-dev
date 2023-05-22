@@ -110,6 +110,25 @@ const ConfirmSignupFormComponent = props => (
                 )}
               />
             </div>
+            <FieldTextInput
+              className={css.registration}
+              type="text"
+              id={formId ? `${formId}.registration` : 'registration'}
+              name="registration"
+              autoComplete="registration"
+              label={intl.formatMessage({
+                id: 'SignupForm.registrationLabel',
+              })}
+              placeholder={intl.formatMessage({
+                id: 'SignupForm.registrationPlaceholder',
+              })}
+              validate={validators.required(
+                intl.formatMessage({
+                  id: 'SignupForm.registrationRequired',
+                })
+              )}
+              description= "This helps charger owners know who to expect"
+            />
           </div>
 
           <div className={css.bottomWrapper}>

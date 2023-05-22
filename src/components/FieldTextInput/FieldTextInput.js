@@ -118,7 +118,7 @@ FieldTextInputComponent.propTypes = {
   id: string,
   label: string,
 
-  // Description is a custom prop created to describe the field (created by Chargemate dev)
+  // Description is a custom prop created to describe the field (created by Charged dev)
   description: string,
 
   // Uncontrolled input uses defaultValue prop, but doesn't pass value from form to the field.

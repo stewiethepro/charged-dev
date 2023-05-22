@@ -35,3 +35,7 @@
 .bottomWrapper {
   composes: marketplaceModalBottomWrapper from global;
 }
+
+.registration {
+  margin-top: 24px;
+}
