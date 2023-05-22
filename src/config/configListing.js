@@ -269,8 +269,8 @@ export const listingTypes = [
     listingType: 'hourly-booking',
     label: 'Hourly booking',
     transactionType: {
-      process: 'chargemate-booking',
-      alias: 'chargemate-booking/release-1',
+      process: 'charged-booking',
+      alias: 'charged-booking/release-1',
       unitType: 'hour',
     },
   },

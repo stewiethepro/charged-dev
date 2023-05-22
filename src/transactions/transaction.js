@@ -13,7 +13,7 @@ export const HOUR = 'hour';
 // Then names of supported processes
 export const PURCHASE_PROCESS_NAME = 'default-purchase';
 export const BOOKING_PROCESS_NAME = 'default-booking';
-export const CUSTOMER_CANCEL_BOOKING_PROCESS_NAME = 'chargemate-booking';
+export const CUSTOMER_CANCEL_BOOKING_PROCESS_NAME = 'charged-booking';
 
 
 /**
