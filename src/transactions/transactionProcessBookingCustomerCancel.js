@@ -44,6 +44,12 @@ export const transitions = {
 
   // The customer can cancel the offer
   CUSTOMER_CANCEL: 'transition/customer-cancel',
+  
+  // The customer can cancel an approved booking
+  CUSTOMER_CANCEL_ACCEPTED_BOOKING: 'transition/cancel-by-customer',
+  
+  // The provider can cancel an approved booking
+  PROVIDER_CANCEL_ACCEPTED_BOOKING: 'transition/cancel-by-provider',
 
   // The backend automatically expire the transaction.
   EXPIRE: 'transition/expire',
@@ -150,6 +156,8 @@ export const graph = {
         [transitions.CANCEL]: states.CANCELED,
         [transitions.COMPLETE]: states.DELIVERED,
         [transitions.OPERATOR_COMPLETE]: states.DELIVERED,
+        [transitions.CUSTOMER_CANCEL_ACCEPTED_BOOKING]: states.CANCELED,
+        [transitions.PROVIDER_CANCEL_ACCEPTED_BOOKING]: states.CANCELED,
       },
     },
 
@@ -192,6 +200,8 @@ export const isRelevantPastTransition = transition => {
     transitions.DECLINE,
     transitions.OPERATOR_DECLINE,
     transitions.CUSTOMER_CANCEL,
+    transitions.CUSTOMER_CANCEL_ACCEPTED_BOOKING,
+    transitions.PROVIDER_CANCEL_ACCEPTED_BOOKING,
     transitions.EXPIRE,
     transitions.REVIEW_1_BY_CUSTOMER,
     transitions.REVIEW_1_BY_PROVIDER,

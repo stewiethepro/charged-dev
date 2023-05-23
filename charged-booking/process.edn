@@ -85,8 +85,8 @@
     [{:fn/plus
       [{:fn/timepoint [:time/first-entered-state :state/preauthorized]}
        {:fn/period ["P6D"]}]}
-     {:fn/plus
-      [{:fn/timepoint [:time/booking-end]} {:fn/period ["P1D"]}]}]},
+     {:fn/minus
+      [{:fn/timepoint [:time/booking-display-start]} {:fn/period ["PT10M"]}]}]},
    :actions
    [{:name :action/calculate-full-refund}
     {:name :action/stripe-refund-payment}
@@ -100,6 +100,22 @@
    :to :state/delivered}
   {:name :transition/cancel,
    :actor :actor.role/operator,
+   :actions
+   [{:name :action/calculate-full-refund}
+    {:name :action/stripe-refund-payment}
+    {:name :action/cancel-booking}],
+   :from :state/accepted,
+   :to :state/cancelled}
+  {:name :transition/cancel-by-customer,
+   :actor :actor.role/customer,
+   :actions
+   [{:name :action/calculate-full-refund}
+    {:name :action/stripe-refund-payment}
+    {:name :action/cancel-booking}],
+   :from :state/accepted,
+   :to :state/cancelled}
+  {:name :transition/cancel-by-provider,
+   :actor :actor.role/provider,
    :actions
    [{:name :action/calculate-full-refund}
     {:name :action/stripe-refund-payment}
@@ -156,14 +172,18 @@
    :on :transition/confirm-payment,
    :to :actor.role/provider,
    :template :booking-new-request}
-  {:name :notification/booking-accepted-request,
+  {:name :notification/booking-accepted-request-to-customer,
    :on :transition/accept,
    :to :actor.role/customer,
-   :template :booking-accepted-request}
+   :template :booking-accepted-request-to-customer}
+  {:name :notification/booking-accepted-request-to-provider,
+   :on :transition/accept,
+   :to :actor.role/provider,
+   :template :booking-accepted-request-to-provider}
   {:name :notification/booking-operator-accepted-request-to-customer,
    :on :transition/operator-accept,
    :to :actor.role/customer,
-   :template :booking-accepted-request}
+   :template :booking-accepted-request-to-customer}
   {:name :notification/booking-operator-accepted-request-to-provider,
    :on :transition/operator-accept,
    :to :actor.role/provider,
@@ -172,6 +192,38 @@
    :on :transition/decline,
    :to :actor.role/customer,
    :template :booking-declined-request}
+  {:name :notification/booking-cancelled-by-customer-to-customer,
+   :on :transition/cancel-by-customer,
+   :to :actor.role/customer,
+   :template :booking-cancelled-by-customer-to-customer}
+  {:name :notification/booking-cancelled-by-customer-to-provider,
+   :on :transition/cancel-by-customer,
+   :to :actor.role/provider,
+   :template :booking-cancelled-by-customer-to-provider}
+  {:name :notification/booking-cancelled-by-provider-to-customer,
+   :on :transition/cancel-by-provider,
+   :to :actor.role/customer,
+   :template :booking-cancelled-by-provider-to-customer}
+   {:name :notification/booking-cancelled-by-provider-to-provider,
+   :on :transition/cancel-by-provider,
+   :to :actor.role/provider,
+   :template :booking-cancelled-by-provider-to-provider}
+   {:name :notification/booking-cancelled-by-operator-to-customer,
+   :on :transition/cancel,
+   :to :actor.role/customer,
+   :template :booking-cancelled-by-provider-to-customer}
+   {:name :notification/booking-cancelled-by-operator-to-provider,
+   :on :transition/cancel,
+   :to :actor.role/provider,
+   :template :booking-cancelled-by-operator-to-provider}
+  {:name :notification/booking-request-cancelled-by-customer-to-provider,
+   :on :transition/customer-cancel,
+   :to :actor.role/provider,
+   :template :booking-request-cancelled-by-customer-to-provider}
+  {:name :notification/booking-request-cancelled-by-customer-to-customer,
+   :on :transition/customer-cancel,
+   :to :actor.role/customer,
+   :template :booking-request-cancelled-by-customer-to-customer}
   {:name :notification/booking-operator-declined-request-to-customer,
    :on :transition/operator-decline,
    :to :actor.role/customer,

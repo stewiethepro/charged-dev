@@ -41,6 +41,26 @@ export const getStateDataForBookingProcess = (txInfo, processInfo) => {
     .cond([states.INQUIRY, PROVIDER], () => {
       return { processName, processState, showDetailCardHeadings: true };
     })
+    .cond([states.ACCEPTED, CUSTOMER], () => {
+      return { 
+        processName, 
+        processState, 
+        showDetailCardHeadings: true, 
+        showExtraInfo: false, 
+        showActionButtons: true, 
+        primaryButtonProps: actionButtonProps(transitions.CUSTOMER_CANCEL_ACCEPTED_BOOKING, CUSTOMER),
+      };
+    })
+    .cond([states.ACCEPTED, PROVIDER], () => {
+      return { 
+        processName, 
+        processState, 
+        showDetailCardHeadings: true, 
+        showExtraInfo: false, 
+        showActionButtons: true, 
+        primaryButtonProps: actionButtonProps(transitions.PROVIDER_CANCEL_ACCEPTED_BOOKING, PROVIDER),
+      };
+    })
     .cond([states.PREAUTHORIZED, CUSTOMER], () => {
       return { processName, processState, showDetailCardHeadings: true, showExtraInfo: true, showActionButtons: true, primaryButtonProps: actionButtonProps(transitions.CUSTOMER_CANCEL, CUSTOMER), };
     })
