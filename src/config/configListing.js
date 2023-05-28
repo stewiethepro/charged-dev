@@ -131,28 +131,13 @@ export const listingFields = [
     },
   },
   {
-    key: 'keyRequired',
-    scope: 'public',
-    schemaType: 'enum',
-    enumOptions: [
-      { option: 'true', label: 'Yes' },
-      { option: 'false', label: 'No' },
-    ],
-    filterConfig: {
-      indexForSearch: true,
-      label: 'Key Required',
-      group: 'secondary',
-    },
-    showConfig: {
-      label: 'Key Required',
-      isDetail: true,
-    },
+    key: 'accessInstructions',
+    scope: 'private',
+    schemaType: 'text',
     saveConfig: {
-      label: 'Key Required',
-      placeholderMessage: 'Is a key or access code required?',
-      isRequired: true,
-      requiredMessage: 'You need to select whether access is restricted.',
-      descriptionMessage:'Would a customer need to get either a key or an access code from you in order to get to the charger?',
+      label: 'Access Instructions',
+      placeholderMessage: 'The key to the gate is under the flower pot',
+      descriptionMessage:'Please outline any details about how to access your charger (e.g. access code is 4487). This data will not be publicly visible and will only be shared with customers whose bookings you accept.',
     },
   },
   // {

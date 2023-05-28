@@ -65,6 +65,7 @@ export const getStateDataForBookingProcess = (txInfo, processInfo) => {
       return { processName, processState, showDetailCardHeadings: true, showExtraInfo: true, showActionButtons: true, primaryButtonProps: actionButtonProps(transitions.CUSTOMER_CANCEL, CUSTOMER), };
     })
     .cond([states.PREAUTHORIZED, PROVIDER], () => {
+
       const primary = isCustomerBanned ? null : actionButtonProps(transitions.ACCEPT, PROVIDER);
       const secondary = isCustomerBanned ? null : actionButtonProps(transitions.DECLINE, PROVIDER);
       return {

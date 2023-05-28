@@ -428,6 +428,8 @@ export const fetchTransaction = (id, txRole, config) => (dispatch, getState, sdk
       }
 
       const canFetchListing = listing && listing.attributes && !listing.attributes.deleted;
+
+      
       if (canFetchListing) {
         return sdk.listings.show({
           id: listingId,
@@ -458,8 +460,62 @@ export const makeTransition = (txId, transitionName, params) => (dispatch, getSt
     return Promise.reject(new Error('Transition already in progress'));
   }
   dispatch(transitionRequest(transitionName));
+  let txResponse = null;
 
-  return sdk.transactions
+  const isAcceptTransition = transitionName === "transition/accept";
+
+  if (isAcceptTransition) {
+    sdk.transactions
+    .show(
+      {
+        id: txId,
+        include: [
+          'listing',
+        ],
+      },
+    )
+    .then(response => {
+      txResponse = response;
+      const listingId = listingRelationship(response).id;
+      
+      return sdk.ownListings.show({
+        id: listingId,
+      }).then(res => {
+        const newParams = {
+          ...params,
+          protectedData: res.data.data.attributes.privateData,
+        }
+         return sdk.transactions
+          .transition({ id: txId, transition: transitionName, params: newParams }, { expand: true })
+          .then(response => {
+            dispatch(addMarketplaceEntities(response));
+            dispatch(transitionSuccess());
+            dispatch(fetchCurrentUserNotifications());
+      
+            // There could be automatic transitions after this transition
+            // For example mark-received-from-purchased > auto-complete.
+            // Here, we make one delayed update to tx.
+            // This way "leave a review" link should show up for the customer.
+            window.setTimeout(() => {
+              sdk.transactions.show({ id: txId }, { expand: true }).then(response => {
+                dispatch(addMarketplaceEntities(response));
+              });
+            }, 3000);
+      
+            return response;
+          })
+          .catch(e => {
+            dispatch(transitionError(storableError(e)));
+            log.error(e, `${transitionName}-failed`, {
+              txId,
+              transition: transitionName,
+            });
+            throw e;
+          });
+      });
+    })
+  } else {
+    return sdk.transactions
     .transition({ id: txId, transition: transitionName, params }, { expand: true })
     .then(response => {
       dispatch(addMarketplaceEntities(response));
@@ -486,6 +542,7 @@ export const makeTransition = (txId, transitionName, params) => (dispatch, getSt
       });
       throw e;
     });
+  }
 };
 
 const fetchMessages = (txId, page, config) => (dispatch, getState, sdk) => {

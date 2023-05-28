@@ -403,6 +403,20 @@
   }
 }
 
+/* Passed-in props for FeedSection subcomponent */
+.bookingAccessInstructionsContainer, 
+.bookingCustomerRegistrationContainer {
+  margin: 42px 24px 0 24px;
+
+  @media (--viewportMedium) {
+    padding: 7px 0 1px 0;
+    margin: 20px 24px 0 24px;
+  }
+  @media (--viewportLarge) {
+    margin: 20px 0 0 0;
+  }
+}
+
 /* Prop to be passed to SendMessageForm component */
 .sendMessageForm {
   position: relative;

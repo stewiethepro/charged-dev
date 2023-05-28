@@ -6,7 +6,7 @@ import { addMarketplaceEntities } from '../../ducks/marketplaceData.duck';
 import { transactionLineItems } from '../../util/api';
 import * as log from '../../util/log';
 import { denormalisedResponseEntities } from '../../util/data';
-import { findNextBoundary, getStartOf, monthIdString } from '../../util/dates';
+import { findNextCustomBoundary, getStartOf, monthIdString } from '../../util/dates';
 import {
   LISTING_PAGE_DRAFT_VARIANT,
   LISTING_PAGE_PENDING_APPROVAL_VARIANT,
@@ -342,8 +342,8 @@ const fetchMonthlyTimeSlots = (dispatch, listing) => {
   if (hasWindow && listing.id && hasTimeZone) {
     const tz = listing.attributes.availabilityPlan.timezone;
     const unitType = attributes?.publicData?.unitType;
-    const timeUnit = unitType === 'hour' ? 'hour' : 'day';
-    const nextBoundary = findNextBoundary(new Date(), timeUnit, tz);
+    const timeUnit = unitType === 'hour' ? 'minutes' : 'day';
+    const nextBoundary = findNextCustomBoundary(new Date(), timeUnit, tz, true, false);
 
     const nextMonth = getStartOf(nextBoundary, 'month', tz, 1, 'months');
     const nextAfterNextMonth = getStartOf(nextMonth, 'month', tz, 1, 'months');

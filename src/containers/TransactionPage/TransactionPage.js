@@ -411,6 +411,16 @@ export const TransactionPageComponent = props => {
     isBookingProcess(stateData.processName) &&
     process?.hasPassedState(process?.states?.ACCEPTED, transaction);
 
+  // The access instructions of the booking can be shown if the booking has passed to the accepted state
+  const showAccessInstructions =
+  isBookingProcess(stateData.processName) &&
+  process?.hasPassedState(process?.states?.ACCEPTED, transaction);
+  
+  // The customer registration can be shown if the booking has passed to the accepted state
+  const showCustomerRegistration =
+  isBookingProcess(stateData.processName) &&
+  process?.hasPassedState(process?.states?.ACCEPTED, transaction);
+
   // TransactionPanel is presentational component
   // that currently handles showing everything inside layout's main view area.
   const panel = isDataAvailable ? (
@@ -434,6 +444,8 @@ export const TransactionPageComponent = props => {
       stateData={stateData}
       transactionRole={transactionRole}
       showBookingLocation={showBookingLocation}
+      showAccessInstructions={showAccessInstructions}
+      showCustomerRegistration={showCustomerRegistration}
       activityFeed={
         <ActivityFeed
           messages={messages}

@@ -1477,7 +1477,7 @@ textarea {
 
 /* Custom styles for landing hero block */
 
-#hero {
+#landing-hero {
 
   @media (--viewportXSmall) {
     display: none;
@@ -1489,7 +1489,7 @@ textarea {
 
 }
 
-#hero-mobile {
+#landing-hero-mobile {
 
   @media (--viewportXSmall) {
     display: block;

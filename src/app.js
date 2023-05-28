@@ -115,6 +115,7 @@ const Configurations = props => {
 export const ClientApp = props => {
   const { store, hostedTranslations = {}, hostedConfig = {} } = props;
   const appConfig = mergeConfig(hostedConfig, defaultConfig);
+  console.log('store: ', store);
 
   // Marketplace color and branding image comes from configs
   // If set, we need to create CSS Property and set it to DOM (documentElement is selected here)

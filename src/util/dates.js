@@ -665,7 +665,8 @@ export const getSharpHours = (startTime, endTime, timeZone, intl, isStart = fals
   // I.e. startTime might be a sharp hour.
   const millisecondBeforeStartTime = new Date(startTime.getTime() - 1);
   return findBookingUnitBoundaries({
-    currentBoundary: findNextCustomBoundary(startTime, 'minutes', timeZone, isFirst, isStart),
+    // add isFirst and isStart params to determine first time slot handling
+    currentBoundary: findNextCustomBoundary(startTime, 'minutes', timeZone, true, isStart),
     startMoment: moment(startTime),
     endMoment: moment(endTime),
     nextBoundaryFn: findNextCustomBoundary,
@@ -706,7 +707,9 @@ export const getSharpHours = (startTime, endTime, timeZone, intl, isStart = fals
  */
 export const getStartHours = (startTime, endTime, timeZone, intl) => {
   const hours = getSharpHours(startTime, endTime, timeZone, intl, true);
-  const removeCount = Math.ceil((hourMinutes + bufferMinutes) / bufferMinutes)
+  // Remove enough start times so that the first slot length can successfully be
+  // booked also from the last start time
+  const removeCount = Math.ceil(firstSlotMinutes / timeSlotMinutes)
   return hours.length < removeCount ? [] : hours.slice(0, -removeCount);
 };
 
@@ -868,7 +871,26 @@ export const getStartOfWeek = (date, timeZone, firstDayOfWeek) => {
 export const getMomentFromDate = (date, timeZone) =>
   timeZone ? moment(date).tz(timeZone) : moment(date);
 
-const bufferMinutes = 30;
+const timeSlotMinutes = 30;
+const firstSlotMinutes = 15;
+
+/**
+ * Calculate the greatest common factor (gcf) of two timeslot lengths
+ * to determine rounding value using the Euclidean algorithm
+ * (https://en.wikipedia.org/wiki/Euclidean_algorithm).
+ */
+const gcf = (a, b) => {
+  return a ? gcf(b % a, a) : b;
+};
+
+/**
+ * Define the rounding value.
+ * If the first time slot is shorter than general time slot,
+ * swap the parameters around so that the first parameter is the shorter one
+ */
+const rounding = gcf(firstSlotMinutes, timeSlotMinutes);
+
+const bufferMinutes = 15;
 const hourMinutes = 60;
 
 export const addBuffer = (date) => moment(date).add(bufferMinutes, 'minutes').toDate();
@@ -890,26 +912,49 @@ moment.fn.startOfDuration = function(value, timeUnit) {
   return moment(Math.floor((this.valueOf() + offsetMs) / ms) * ms);
 };
 
+// export const findNextCustomBoundary = (
+//   currentMomentOrDate,
+//   timeUnit,
+//   timeZone,
+//   isFirst,
+//   isStart
+// ) => {
+//   // For end time slots (i.e. not start slots), add a full hour.
+//   // For the first start slot, use the actual start time.
+//   // For other start slots, use the buffer time.
+//   const increment = !isStart
+//     ? hourMinutes
+//     : isFirst
+//     ? 0
+//     : bufferMinutes;
+
+//   return moment(currentMomentOrDate)
+//     .clone()
+//     .tz(timeZone)
+//     .add(increment, timeUnit)
+//     .startOfDuration(bufferMinutes, timeUnit)
+//     .toDate();
+// };
+
 export const findNextCustomBoundary = (
   currentMomentOrDate,
   timeUnit,
   timeZone,
-  isFirst,
-  isStart
+  isFirst = false,
+  isStart = false,
 ) => {
-  // For end time slots (i.e. not start slots), add a full hour.
-  // For the first start slot, use the actual start time.
-  // For other start slots, use the buffer time.
-  const increment = !isStart
-    ? hourMinutes
-    : isFirst
-    ? 0
-    : bufferMinutes;
-
+  // Use the default booking length for non-first slots
+  // Use the first booking length for first end boundary
+  // Use 0 for first start boundary
+  const increment = !isFirst
+    ? firstSlotMinutes
+    : !isStart
+    ? timeSlotMinutes
+    : 0;
   return moment(currentMomentOrDate)
     .clone()
     .tz(timeZone)
     .add(increment, timeUnit)
-    .startOf(bufferMinutes, timeUnit)
+    .startOfDuration(firstSlotMinutes, timeUnit)
     .toDate();
 };

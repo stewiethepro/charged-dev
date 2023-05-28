@@ -18,7 +18,9 @@ import BreakdownMaybe from './BreakdownMaybe';
 import DetailCardHeadingsMaybe from './DetailCardHeadingsMaybe';
 import DetailCardImage from './DetailCardImage';
 import DeliveryInfoMaybe from './DeliveryInfoMaybe';
+import AccessInstructionsMaybe from './AccessInstructionsMaybe';
 import BookingLocationMaybe from './BookingLocationMaybe';
+import CustomerRegistrationMaybe from './CustomerRegistrationMaybe';
 import FeedSection from './FeedSection';
 import ActionButtonsMaybe from './ActionButtonsMaybe';
 import DiminishedActionButtonMaybe from './DiminishedActionButtonMaybe';
@@ -134,6 +136,8 @@ export class TransactionPanelComponent extends Component {
       intl,
       stateData,
       showBookingLocation,
+      showAccessInstructions,
+      showCustomerRegistration,
       activityFeed,
       orderBreakdown,
       orderPanel,
@@ -251,6 +255,18 @@ export class TransactionPanelComponent extends Component {
                 listing={listing}
                 showBookingLocation={showBookingLocation}
               />
+              <AccessInstructionsMaybe
+                className={css.deliveryInfoSection}
+                isCustomer={isCustomer}
+                protectedData={protectedData}
+                showAccessInstructions={showAccessInstructions}
+              />
+              <CustomerRegistrationMaybe
+                className={css.deliveryInfoSection}
+                isProvider={isProvider}
+                protectedData={protectedData}
+                showCustomerRegistration={showCustomerRegistration}
+              />
             </div>
 
             <FeedSection
@@ -355,6 +371,8 @@ TransactionPanelComponent.defaultProps = {
   stateData: {},
   activityFeed: null,
   showBookingLocation: false,
+  showAccessInstructions: false,
+  showCustomerRegistration: false,
   orderBreakdown: null,
   orderPanel: null,
 };
@@ -380,6 +398,8 @@ TransactionPanelComponent.propTypes = {
   onSendMessage: func.isRequired,
   stateData: stateDataShape,
   showBookingLocation: bool,
+  showAccessInstructions: bool,
+  showCustomerRegistration: bool,
   activityFeed: node,
   orderBreakdown: node,
   orderPanel: node,

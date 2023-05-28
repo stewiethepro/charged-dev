@@ -142,7 +142,7 @@ const getAllTimeValues = (
   // Value selectedStartTime is a string when user has selected it through the form.
   // That's why we need to convert also the timestamp we use as a default
   // value to string for consistency. This is expected later when we
-  // want to compare the sartTime and endTime.
+  // want to compare the startTime and endTime.
   const startTime = selectedStartTime
     ? selectedStartTime
     : startTimes.length > 0 && startTimes[0] && startTimes[0].timestamp

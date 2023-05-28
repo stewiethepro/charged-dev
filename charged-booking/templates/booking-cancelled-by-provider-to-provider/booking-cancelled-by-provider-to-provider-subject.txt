@@ -1,1 +1,1 @@
-You cancelled {{transaction.customer.display-name}}'s booking for {{transaction.listing.title}}
+You cancelled {{transaction.customer.display-name}}'s booking

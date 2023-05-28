@@ -69,7 +69,7 @@ const CustomFieldMultiEnum = props => {
 
 const CustomFieldText = props => {
   const { name, fieldConfig, defaultRequiredMessage, intl } = props;
-  const { label, placeholderMessage, isRequired, requiredMessage } = fieldConfig?.saveConfig || {};
+  const { label, placeholderMessage, isRequired, requiredMessage, descriptionMessage } = fieldConfig?.saveConfig || {};
   const validateMaybe = isRequired
     ? { validate: required(requiredMessage || defaultRequiredMessage) }
     : {};
@@ -84,6 +84,7 @@ const CustomFieldText = props => {
       type="textarea"
       label={label}
       placeholder={placeholder}
+      description={descriptionMessage}
       {...validateMaybe}
     />
   );
