@@ -136,6 +136,7 @@ export const PasswordRecoveryPageComponent = props => {
     onSubmitEmail,
     onRetypeEmail,
     intl,
+    currentUser,
   } = props;
   const alreadyrequested = submittedEmail || passwordRequested;
   const showPasswordRecoveryForm = (
@@ -147,6 +148,24 @@ export const PasswordRecoveryPageComponent = props => {
       recoveryError={recoveryError}
     />
   );
+
+  if (typeof window !== "undefined") {
+    if (currentUser) {
+      console.log(currentUser);
+      window.Intercom("boot", {
+        api_base: "https://api-iam.intercom.io",
+        app_id: "qv2ju58e",
+        name: currentUser.attributes.profile.displayName,
+        email: currentUser.attributes.email,
+        created_at: currentUser.attributes.createdAt
+      });
+    } else {
+      window.Intercom("boot", {
+        api_base: "https://api-iam.intercom.io",
+        app_id: "qv2ju58e",
+      });
+    }
+  }
 
   return (
     <Page
@@ -222,6 +241,7 @@ const mapStateToProps = state => {
     recoveryInProgress,
     passwordRequested,
   } = state.PasswordRecoveryPage;
+  const { currentUser } = state.user;
   return {
     scrollingDisabled: isScrollingDisabled(state),
     initialEmail,
@@ -229,6 +249,7 @@ const mapStateToProps = state => {
     recoveryError,
     recoveryInProgress,
     passwordRequested,
+    currentUser,
   };
 };
 

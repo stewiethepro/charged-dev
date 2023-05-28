@@ -115,6 +115,26 @@ export const PasswordResetPageComponent = props => {
     });
   };
 
+  // Boot Intercom
+
+  if (typeof window !== "undefined") {
+    if (currentUser) {
+      console.log(currentUser);
+      window.Intercom("boot", {
+        api_base: "https://api-iam.intercom.io",
+        app_id: "qv2ju58e",
+        name: currentUser.attributes.profile.displayName,
+        email: currentUser.attributes.email,
+        created_at: currentUser.attributes.createdAt
+      });
+    } else {
+      window.Intercom("boot", {
+        api_base: "https://api-iam.intercom.io",
+        app_id: "qv2ju58e",
+      });
+    }
+  }
+
   return (
     <Page
       title={intl.formatMessage({
@@ -174,10 +194,12 @@ PasswordResetPageComponent.propTypes = {
 
 const mapStateToProps = state => {
   const { resetPasswordInProgress, resetPasswordError } = state.PasswordResetPage;
+  const { currentUser } = state.user;
   return {
     scrollingDisabled: isScrollingDisabled(state),
     resetPasswordInProgress,
     resetPasswordError,
+    currentUser,
   };
 };
 

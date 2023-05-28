@@ -119,7 +119,6 @@ const AddListingFields = props => {
   const { listingType, listingFieldsConfig, intl } = props;
   const fields = listingFieldsConfig.reduce((pickedFields, fieldConfig) => {
     const { key, includeForListingTypes, schemaType, scope } = fieldConfig || {};
-    console.log(fieldConfig);
 
     const isKnownSchemaType = EXTENDED_DATA_SCHEMA_TYPES.includes(schemaType);
     const isTargetProcessAlias =

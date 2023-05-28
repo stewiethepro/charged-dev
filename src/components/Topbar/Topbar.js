@@ -136,6 +136,8 @@ class TopbarComponent extends Component {
         window.location = path;
       }
 
+      Intercom('shutdown');
+
       console.log('logged out'); // eslint-disable-line
     });
   }

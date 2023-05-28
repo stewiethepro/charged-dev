@@ -46,7 +46,27 @@ const TermsOfServiceContent = props => {
 
 // Presentational component for TermsOfServicePage
 const TermsOfServicePageComponent = props => {
-  const { pageAssetsData, inProgress, error } = props;
+  const { pageAssetsData, inProgress, error, currentUser } = props;
+
+  // Boot Intercom
+
+  if (typeof window !== "undefined") {
+    if (currentUser) {
+      console.log(currentUser);
+      window.Intercom("boot", {
+        api_base: "https://api-iam.intercom.io",
+        app_id: "qv2ju58e",
+        name: currentUser.attributes.profile.displayName,
+        email: currentUser.attributes.email,
+        created_at: currentUser.attributes.createdAt
+      });
+    } else {
+      window.Intercom("boot", {
+        api_base: "https://api-iam.intercom.io",
+        app_id: "qv2ju58e",
+      });
+    }
+  }
 
   return (
     <PageBuilder
@@ -66,7 +86,8 @@ TermsOfServicePageComponent.propTypes = {
 
 const mapStateToProps = state => {
   const { pageAssetsData, inProgress, error } = state.hostedAssets || {};
-  return { pageAssetsData, inProgress, error };
+  const { currentUser } = state.user;
+  return { pageAssetsData, inProgress, error, currentUser };
 };
 
 // Note: it is important that the withRouter HOC is **outside** the

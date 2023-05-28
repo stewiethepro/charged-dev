@@ -38,6 +38,7 @@ export class NotFoundPageComponent extends Component {
       isKeywordSearch,
       intl,
       scrollingDisabled,
+      currentUser,
     } = this.props;
 
     const title = intl.formatMessage({
@@ -51,6 +52,24 @@ export class NotFoundPageComponent extends Component {
       const searchParams = keywords ? { keywords } : { address: search, origin, bounds };
       history.push(createResourceLocatorString('SearchPage', routeConfiguration, {}, searchParams));
     };
+
+    if (typeof window !== "undefined") {
+      if (currentUser) {
+        console.log(currentUser);
+        window.Intercom("boot", {
+          api_base: "https://api-iam.intercom.io",
+          app_id: "qv2ju58e",
+          name: currentUser.attributes.profile.displayName,
+          email: currentUser.attributes.email,
+          created_at: currentUser.attributes.createdAt
+        });
+      } else {
+        window.Intercom("boot", {
+          api_base: "https://api-iam.intercom.io",
+          app_id: "qv2ju58e",
+        });
+      }
+    }
 
     return (
       <Page title={title} scrollingDisabled={scrollingDisabled}>
@@ -120,8 +139,10 @@ const EnhancedNotFoundPage = props => {
 };
 
 const mapStateToProps = state => {
+  const { currentUser } = state.user;
   return {
     scrollingDisabled: isScrollingDisabled(state),
+    currentUser,
   };
 };
 

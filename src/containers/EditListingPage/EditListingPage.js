@@ -197,6 +197,25 @@ export const EditListingPageComponent = props => {
       ? intl.formatMessage({ id: 'EditListingPage.titleCreateListing' })
       : intl.formatMessage({ id: 'EditListingPage.titleEditListing' });
 
+    // Boot Intercom
+
+    if (typeof window !== "undefined") {
+      if (currentUser) {
+        window.Intercom("boot", {
+          api_base: "https://api-iam.intercom.io",
+          app_id: "qv2ju58e",
+          name: currentUser.attributes.profile.displayName,
+          email: currentUser.attributes.email,
+          created_at: currentUser.attributes.createdAt
+        });
+      } else {
+        window.Intercom("boot", {
+          api_base: "https://api-iam.intercom.io",
+          app_id: "qv2ju58e",
+        });
+      }
+    }
+
     return (
       <Page title={title} scrollingDisabled={scrollingDisabled}>
         <TopbarContainer

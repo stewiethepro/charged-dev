@@ -246,6 +246,7 @@ export class SearchPageComponent extends Component {
       onActivateListing,
       routeConfiguration,
       config,
+      currentUser,
     } = this.props;
 
     const { listingFields: listingFieldsConfig } = config?.listing || {};
@@ -381,6 +382,26 @@ export class SearchPageComponent extends Component {
     const topbarClasses = this.state.isMobileModalOpen
       ? classNames(css.topbarBehindModal, css.topbar)
       : css.topbar;
+
+    // Boot Intercom
+
+    if (typeof window !== "undefined") {
+      if (currentUser) {
+        console.log(currentUser);
+        window.Intercom("boot", {
+          api_base: "https://api-iam.intercom.io",
+          app_id: "qv2ju58e",
+          name: currentUser.attributes.profile.displayName,
+          email: currentUser.attributes.email,
+          created_at: currentUser.attributes.createdAt
+        });
+      } else {
+        window.Intercom("boot", {
+          api_base: "https://api-iam.intercom.io",
+          app_id: "qv2ju58e",
+        });
+      }
+    }
 
     // N.B. openMobileMap button is sticky.
     // For some reason, stickyness doesn't work on Safari, if the element is <button>
@@ -617,6 +638,7 @@ const mapStateToProps = state => {
     activeListingId,
   } = state.SearchPage;
   const listings = getListingsById(state, currentPageResultIds);
+  const { currentUser } = state.user;
 
   return {
     listings,
@@ -626,6 +648,7 @@ const mapStateToProps = state => {
     searchListingsError,
     searchParams,
     activeListingId,
+    currentUser,
   };
 };
 

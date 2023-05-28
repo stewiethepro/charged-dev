@@ -16,7 +16,7 @@ import BlockDefaultLandingHero from '../PageBuilder/BlockBuilder/BlockDefaultLan
 
 
 export const LandingPageComponent = props => {
-  const { pageAssetsData, inProgress, error } = props;
+  const { pageAssetsData, inProgress, error, currentUser } = props;
 
   const sectionOverrides = {
     features: { component: SectionFeaturesLandingHero },
@@ -25,6 +25,26 @@ export const LandingPageComponent = props => {
   const blockOverrides = {
     defaultBlock: { component: BlockDefaultLandingHero },
   };
+
+  // Boot Intercom
+
+  if (typeof window !== "undefined") {
+    if (currentUser) {
+      console.log(currentUser);
+      window.Intercom("boot", {
+        api_base: "https://api-iam.intercom.io",
+        app_id: "qv2ju58e",
+        name: currentUser.attributes.profile.displayName,
+        email: currentUser.attributes.email,
+        created_at: currentUser.attributes.createdAt
+      });
+    } else {
+      window.Intercom("boot", {
+        api_base: "https://api-iam.intercom.io",
+        app_id: "qv2ju58e",
+      });
+    }
+  }
 
   return (
     <PageBuilder
@@ -35,20 +55,27 @@ export const LandingPageComponent = props => {
         blockComponents: blockOverrides
       }}
       error={error}
-      fallbackPage={<FallbackPage error={error} />}
+      fallbackPage={<FallbackPage error={error}
+      currentUser={currentUser} />}
     />
   );
+};
+
+LandingPageComponent.defaultProps = {
+  currentUser: null,
 };
 
 LandingPageComponent.propTypes = {
   pageAssetsData: object,
   inProgress: bool,
   error: propTypes.error,
+  currentUser: propTypes.currentUser,
 };
 
 const mapStateToProps = state => {
   const { pageAssetsData, inProgress, error } = state.hostedAssets || {};
-  return { pageAssetsData, inProgress, error };
+  const { currentUser } = state.user;
+  return { pageAssetsData, inProgress, error, currentUser };
 };
 
 // Note: it is important that the withRouter HOC is **outside** the
