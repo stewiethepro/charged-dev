@@ -220,7 +220,7 @@ const EditListingDetailsPanel = props => {
       </H3>
 
       <p className={css.description}>
-        Fill in some details about your charger. We've written a <a target='blank' href="/p/how-to-list-your-charger">handy blog post</a> to help you understand what type of charger you have.
+        Fill in some details about your charger. We've written a <a target='blank' href="/p/how-to-list-your-charger">handy article</a> to help you understand what type of charger you have.
       </p>
 
       {canShowEditListingDetailsForm ? (

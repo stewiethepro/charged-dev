@@ -136,8 +136,8 @@ export const listingFields = [
     schemaType: 'text',
     saveConfig: {
       label: 'Access Instructions',
-      placeholderMessage: 'The key to the gate is under the flower pot',
-      descriptionMessage:'Please outline any details about how to access your charger (e.g. access code is 4487). This data will not be publicly visible and will only be shared with customers whose bookings you accept.',
+      placeholderMessage: 'Access code for the front gate is 4487',
+      descriptionMessage:'Please outline any details about how to access your charger. This data will not be publicly visible and will only be shared with customers whose bookings you accept.',
     },
   },
   // {

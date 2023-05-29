@@ -1481,6 +1481,7 @@ textarea {
 
   @media (--viewportXSmall) {
     display: none;
+    height: 93vh;
   }
 
   @media (--viewportMedium) {
