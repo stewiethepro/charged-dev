@@ -58,6 +58,7 @@ const Footer = props => {
   const config = useConfiguration();
   const { rootClassName, className, intl } = props;
   const socialMediaLinks = renderSocialMediaLinks(intl, config);
+  const { siteHelpCentrePage } = config
   const classes = classNames(rootClassName || css.root, className);
 
   return (
@@ -97,6 +98,11 @@ const Footer = props => {
                   <NamedLink name="NewListingPage" className={css.link}>
                     <FormattedMessage id="Footer.toNewListingPage" />
                   </NamedLink>
+                </li>
+                <li className={css.listItem}>
+                  <ExternalLink key="HelpCentrePage" href={siteHelpCentrePage} className={css.link}>
+                    <FormattedMessage id="Footer.toHelpCentrePage" />
+                  </ExternalLink>
                 </li>
               </ul>
             </div>

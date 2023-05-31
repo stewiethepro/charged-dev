@@ -262,7 +262,7 @@ const FieldCurrencyInputComponent = props => {
   return (
     <div className={classes}>
       {label ? <label htmlFor={id}>{label}</label> : null}
-      {description ? <h5 className={css.description}>{description}</h5> : null}
+      {description ? <p className={css.description}>{description}</p> : null}
       <CurrencyInput {...inputProps} />
       {hideErrorMessage ? null : <ValidationError fieldMeta={meta} />}
     </div>

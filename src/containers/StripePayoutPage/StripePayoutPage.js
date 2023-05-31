@@ -151,7 +151,7 @@ export const StripePayoutPageComponent = props => {
       window.Intercom("boot", {
         api_base: "https://api-iam.intercom.io",
         app_id: "qv2ju58e",
-        name: currentUser.attributes.profile.displayName,
+        name: currentUser.attributes.profile.firstName + ' ' + currentUser.attributes.profile.lastName,
         user_id: currentUser.id.uuid, 
         email: currentUser.attributes.email,
         created_at: currentUser.attributes.createdAt

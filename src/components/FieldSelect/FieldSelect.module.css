@@ -6,6 +6,7 @@
 }
 
 .description {
-  font-size: small;
-  color: hsl(240 3% 50%);
+  font-size: medium;
+  color: hsl(240 3% 60%);
+  margin-top: 0;
 }

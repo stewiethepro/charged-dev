@@ -84,6 +84,8 @@ const defaultConfig = {
   siteInstagramPage: null, // e.g. 'https://www.instagram.com/sharetribe/',
   // Twitter handle is needed in meta tags (twitter:site). Start it with '@' character
   siteTwitterHandle: null, // e.g. 'https://www.facebook.com/Sharetribe/',
+  // Help centre
+  siteHelpCentrePage: 'https://help.getcharged.xyz/en/', // e.g. 'https://www.facebook.com/Sharetribe/',
 
   // Optional
   // Note that Google Analytics might need advanced opt-out option / cookie consent

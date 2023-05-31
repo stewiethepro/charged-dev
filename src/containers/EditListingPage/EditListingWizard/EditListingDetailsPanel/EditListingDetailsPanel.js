@@ -8,7 +8,7 @@ import { EXTENDED_DATA_SCHEMA_TYPES, LISTING_STATE_DRAFT } from '../../../../uti
 import { isBookingProcessAlias } from '../../../../transactions/transaction';
 
 // Import shared components
-import { H3, ListingLink, Button } from '../../../../components';
+import { H3, ListingLink, Button, ExternalLink } from '../../../../components';
 
 // Import modules from this directory
 import ErrorMessage from './ErrorMessage';
@@ -179,6 +179,7 @@ const EditListingDetailsPanel = props => {
     updateInProgress,
     errors,
     config,
+    currentUser,
   } = props;
 
   const classes = classNames(rootClassName || css.root, className);
@@ -203,6 +204,15 @@ const EditListingDetailsPanel = props => {
     noListingTypesSet && (!hasExistingListingType || hasValidExistingListingType);
   const isPublished = listing?.id && state !== LISTING_STATE_DRAFT;
 
+  const { siteHelpCentrePage } = config
+
+  const userId = currentUser.id.uuid
+  const email = currentUser.attributes.email
+  const name = currentUser.attributes.profile.firstName + ' ' + currentUser.attributes.profile.lastName
+  const tallyFormLink = 'https://tally.so/r/nWr0kL?'
+  const queryString = 'user_id=' + userId + '&email=' + email + '&name=' + name
+  const tallyRedirectLink = tallyFormLink + queryString
+
   return (
     <div className={classes}>
       <H3 as="h1">
@@ -220,7 +230,11 @@ const EditListingDetailsPanel = props => {
       </H3>
 
       <p className={css.description}>
-        Fill in some details about your charger. We've written a <a target='blank' href="/p/how-to-list-your-charger">handy article</a> to help you understand what type of charger you have.
+        Fill in some details about your charger. We've made a&nbsp;
+          <ExternalLink key="TallyChargerType" href={tallyRedirectLink}>
+          handy tool
+          </ExternalLink>
+          &nbsp;to help you understand what type of charger you have.
       </p>
 
       {canShowEditListingDetailsForm ? (

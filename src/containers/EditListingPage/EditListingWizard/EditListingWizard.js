@@ -517,6 +517,7 @@ class EditListingWizard extends Component {
                 onManageDisableScrolling={onManageDisableScrolling}
                 config={config}
                 routeConfiguration={routeConfiguration}
+                currentUser={currentUser}
               />
             );
           })}

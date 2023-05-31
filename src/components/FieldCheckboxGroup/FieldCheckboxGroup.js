@@ -35,7 +35,7 @@ const FieldCheckboxRenderer = props => {
   return (
     <fieldset className={classes}>
       {label ? <label>{label}</label> : null}
-      {description ? <h5 className={css.description}>{description}</h5> : null}
+      {description ? <p className={css.description}>{description}</p> : null}
       <ul className={listClasses}>
         {options.map((option, index) => {
           const fieldId = `${id}.${option.key}`;

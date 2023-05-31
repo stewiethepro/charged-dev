@@ -103,6 +103,7 @@ const EditListingWizardTab = props => {
     tabSubmitButtonText,
     config,
     routeConfiguration,
+    currentUser,
   } = props;
 
   const { type } = params;
@@ -185,6 +186,7 @@ const EditListingWizardTab = props => {
           {...panelProps(DETAILS)}
           onProcessChange={onProcessChange}
           config={config}
+          currentUser={currentUser}
         />
       );
     }

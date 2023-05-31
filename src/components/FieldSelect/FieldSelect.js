@@ -48,7 +48,7 @@ const FieldSelectComponent = props => {
   return (
     <div className={classes}>
       {label ? <label htmlFor={id}>{label}</label> : null}
-      {description ? <h5 className={css.description}>{description}</h5> : null}
+      {description ? <p className={css.description}>{description}</p> : null}
       <select {...selectProps}>{children}</select>
       <ValidationError fieldMeta={meta} />
     </div>

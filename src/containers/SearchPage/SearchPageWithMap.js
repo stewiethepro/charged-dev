@@ -385,23 +385,23 @@ export class SearchPageComponent extends Component {
 
     // Boot Intercom
 
-    if (typeof window !== "undefined") {
-      if (currentUser) {
-        console.log(currentUser);
-        window.Intercom("boot", {
-          api_base: "https://api-iam.intercom.io",
-          app_id: "qv2ju58e",
-          name: currentUser.attributes.profile.displayName,
-          email: currentUser.attributes.email,
-          created_at: currentUser.attributes.createdAt
-        });
-      } else {
-        window.Intercom("boot", {
-          api_base: "https://api-iam.intercom.io",
-          app_id: "qv2ju58e",
-        });
-      }
+  if (typeof window !== "undefined") {
+    if (currentUser) {
+      window.Intercom("boot", {
+        api_base: "https://api-iam.intercom.io",
+        app_id: "qv2ju58e",
+        name: currentUser.attributes.profile.firstName + ' ' + currentUser.attributes.profile.lastName,
+        user_id: currentUser.id.uuid, 
+        email: currentUser.attributes.email,
+        created_at: currentUser.attributes.createdAt
+      });
+    } else {
+      window.Intercom("boot", {
+        api_base: "https://api-iam.intercom.io",
+        app_id: "qv2ju58e",
+      });
     }
+  }
 
     // N.B. openMobileMap button is sticky.
     // For some reason, stickyness doesn't work on Safari, if the element is <button>

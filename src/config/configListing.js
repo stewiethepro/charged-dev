@@ -79,8 +79,9 @@ export const listingFields = [
     scope: 'public',
     schemaType: 'enum',
     enumOptions: [
-      { option: '3', label: '3 kW' },
-      { option: '7', label: '7 kW' },
+      { option: '2.3', label: '2.3 kW' },
+      { option: '3.7', label: '3.7 kW' },
+      { option: '7.4', label: '7.4 kW' },
       { option: '11', label: '11 kW' },
       { option: '22', label: '22 kW' },
     ],
@@ -99,7 +100,7 @@ export const listingFields = [
       placeholderMessage: 'Select a power output...',
       isRequired: true,
       requiredMessage: 'You need to select a power output.',
-      descriptionMessage:'If you plug your cable straight into a standard 3-pin wall socket then you can select 3kW. If you\'ve had a dedicated home charger installed then it\'s most likely 7kW but it might be more powerful. Don\'t worry about decimal places.',
+      descriptionMessage:'If you plug your cable straight into a standard 3-pin wall socket then you can select 2.3 kW. If you\'ve had a dedicated home EV charger installed then it\'ll be between 3.7 kW and 22 kW.',
     },
   },
   {
@@ -136,7 +137,7 @@ export const listingFields = [
     schemaType: 'text',
     saveConfig: {
       label: 'Access Instructions',
-      placeholderMessage: 'Access code for the front gate is 4487',
+      placeholderMessage: 'e.g. Access code for the front gate is 4487',
       descriptionMessage:'Please outline any details about how to access your charger. This data will not be publicly visible and will only be shared with customers whose bookings you accept.',
     },
   },
