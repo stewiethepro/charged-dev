@@ -21,7 +21,7 @@ const defaultConfig = {
   // Listing minimum price in currency sub units, e.g. cents.
   // 0 means no restriction to the price
   // Note: Stripe does have minimum fee that depends on country, currency, etc.
-  listingMinimumPriceSubUnits: 500,
+  listingMinimumPriceSubUnits: 400,
 
   // Marketplace name is needed for microcopy and in meta tags (bots and social media sharing reads those)
   marketplaceName: 'Charged',
@@ -85,7 +85,7 @@ const defaultConfig = {
   // Twitter handle is needed in meta tags (twitter:site). Start it with '@' character
   siteTwitterHandle: null, // e.g. 'https://www.facebook.com/Sharetribe/',
   // Help centre
-  siteHelpCentrePage: 'https://help.getcharged.xyz/en/', // e.g. 'https://www.facebook.com/Sharetribe/',
+  siteHelpCentrePage: 'https://help.getcharged.xyz/en/', 
 
   // Optional
   // Note that Google Analytics might need advanced opt-out option / cookie consent
