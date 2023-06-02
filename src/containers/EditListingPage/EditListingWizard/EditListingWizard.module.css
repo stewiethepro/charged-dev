@@ -110,3 +110,39 @@
     margin-bottom: 40px;
   }
 }
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 3px 0;
+
+  @media (--viewportMedium) {
+    padding: 5px 0 3px 0;
+  }
+}
+
+.itemLabel {
+  composes: marketplaceBodyFontStyles from global;
+  line-height: 24px;
+  margin: 0;
+  font-weight: var(--fontWeightSemiBold);
+}
+
+.iconWrapper {
+  align-self: baseline;
+  margin-right: 8px;
+
+  /* This follows line-height */
+  height: 24px;
+}
+
+.labelWrapper {
+  display: inline-block;
+}
+
+.twoColumns {
+  @media (--viewportMedium) {
+    column-count: 2;
+  }
+}
+

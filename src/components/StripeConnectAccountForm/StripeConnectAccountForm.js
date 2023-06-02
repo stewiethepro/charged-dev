@@ -136,6 +136,9 @@ const CreateStripeAccountFields = props => {
         className={css.selectCountry}
         autoComplete="country"
         label={countryLabel}
+        description={intl.formatMessage({ 
+          id: 'StripeConnectAccountForm.countryDescription' 
+        })}
         validate={validators.required(
           intl.formatMessage({
             id: 'StripeConnectAccountForm.countryRequired',
@@ -270,7 +273,15 @@ const StripeConnectAccountFormComponent = props => {
           values,
           stripeConnected,
           currentUser,
+          returnedAbnormallyFromStripe,
+          showVerificationNeeded
         } = fieldRenderProps;
+
+        console.log(
+          'stripeConnected: ', stripeConnected, 
+          'returnedAbnormallyFromStripe: ', returnedAbnormallyFromStripe,
+          'showVerificationNeeded: ', showVerificationNeeded
+        );
 
         const accountDataLoaded = stripeConnected && stripeAccountFetched && savedCountry;
         const submitInProgress = inProgress;

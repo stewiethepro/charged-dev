@@ -15,6 +15,7 @@ export { default as IconAdd } from './IconAdd/IconAdd';
 export { default as IconArrowHead } from './IconArrowHead/IconArrowHead';
 export { default as IconBannedUser } from './IconBannedUser/IconBannedUser';
 export { default as IconCard } from './IconCard/IconCard';
+export { default as IconCheckBadge } from './IconCheckBadge/IconCheckBadge';
 export { default as IconCheckmark } from './IconCheckmark/IconCheckmark';
 export { default as IconClose } from './IconClose/IconClose';
 export { default as IconDelete } from './IconDelete/IconDelete';
@@ -23,6 +24,7 @@ export { default as IconEdit } from './IconEdit/IconEdit';
 export { default as IconEmailAttention } from './IconEmailAttention/IconEmailAttention';
 export { default as IconEmailSent } from './IconEmailSent/IconEmailSent';
 export { default as IconEmailSuccess } from './IconEmailSuccess/IconEmailSuccess';
+export { default as IconExclamationMark } from './IconExclamationMark/IconExclamationMark';
 export { default as IconInquiry } from './IconInquiry/IconInquiry';
 export { default as IconKeys } from './IconKeys/IconKeys';
 export { default as IconKeysSuccess } from './IconKeysSuccess/IconKeysSuccess';
@@ -82,6 +84,7 @@ export { default as Menu } from './Menu/Menu';
 
 // Modal
 export { default as Modal } from './Modal/Modal';
+export { default as ModalNoClose } from './ModalNoClose/ModalNoClose';
 export { default as ModalInMobile } from './ModalInMobile/ModalInMobile';
 
 // Fields (for Final Form)

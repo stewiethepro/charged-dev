@@ -8,7 +8,7 @@ import { LISTING_STATE_DRAFT } from '../../../../util/types';
 import { types as sdkTypes } from '../../../../util/sdkLoader';
 
 // Import shared components
-import { H3, ListingLink } from '../../../../components';
+import { H3, ListingLink, ExternalLink } from '../../../../components';
 
 // Import modules from this directory
 import EditListingPricingForm from './EditListingPricingForm';
@@ -37,6 +37,7 @@ const EditListingPricingPanel = props => {
     panelUpdated,
     updateInProgress,
     errors,
+    currentUser,
   } = props;
 
   const classes = classNames(rootClassName || css.root, className);
@@ -47,6 +48,14 @@ const EditListingPricingPanel = props => {
       ? initialValues.price.currency === marketplaceCurrency
       : true;
   const unitType = listing?.attributes?.publicData?.unitType;
+
+
+  const userId = currentUser.id.uuid
+  const email = currentUser.attributes.email
+  const name = currentUser.attributes.profile.firstName + ' ' + currentUser.attributes.profile.lastName
+  const tallyFormLink = 'https://tally.so/r/nWr02Q?'
+  const queryString = 'user_id=' + userId + '&email=' + email + '&name=' + name
+  const tallyRedirectLink = tallyFormLink + queryString
 
   return (
     <div className={classes}>
@@ -65,7 +74,11 @@ const EditListingPricingPanel = props => {
       </H3>
 
       <p className={css.description}>
-      If you're not sure about how to price your charger, you can use our <a target='blank' href="http://www.google.com/">calculator</a> to find the right price.
+      If you're not sure about how to price your charger, you can use our&nbsp;
+        <ExternalLink key="TallyCalculator" href={tallyRedirectLink}>
+        calculator
+        </ExternalLink>
+        &nbsp;to find the right price.
       </p>
 
       {priceCurrencyValid ? (

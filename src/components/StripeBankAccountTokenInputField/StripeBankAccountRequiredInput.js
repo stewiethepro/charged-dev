@@ -21,6 +21,7 @@ const StripeBankAccountRequiredInput = props => {
     inputError,
     disabled,
     showInColumns,
+    description,
   } = props;
 
   const showInputError = isTouched && !!inputError;
@@ -50,6 +51,7 @@ const StripeBankAccountRequiredInput = props => {
       <label htmlFor={inputProps.id}>
         <FormattedMessage id={`StripeBankAccountTokenInputField.${inputType}.label`} />
       </label>
+      {description ? <p className={css.description}>{description}</p> : null}
       <input {...inputProps} />
       {showInputError ? errorMessage : null}
     </div>
@@ -63,6 +65,7 @@ StripeBankAccountRequiredInput.defaultProps = {
   className: null,
   inputError: null,
   disabled: false,
+  description: null,
 };
 
 StripeBankAccountRequiredInput.propTypes = {

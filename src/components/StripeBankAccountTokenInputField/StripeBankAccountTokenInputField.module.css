@@ -42,3 +42,9 @@ input.inputError {
     width: calc(50% - 9px);
   }
 }
+
+.description {
+  font-size: medium!important;
+  color: hsl(240 3% 60%);
+  margin-top: 0!important;
+}

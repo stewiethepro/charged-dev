@@ -285,6 +285,9 @@ class TokenInputFieldComponent extends Component {
               showStripeError={showStripeError}
               inputError={this.state[inputType].error}
               showInColumns={showInColumns}
+              description={intl.formatMessage({
+                id: 'StripeBankAccountTokenInputField.accountNumber.description'
+              })}
             />
           );
         })}
