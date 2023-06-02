@@ -46,6 +46,11 @@ import EditListingWizardTab, {
 } from './EditListingWizardTab';
 import css from './EditListingWizard.module.css';
 
+import {  
+  IconCheckBadge, 
+  IconExclamationMark
+} from '../../../components';
+
 // You can reorder these panels.
 // Note 1: You need to change save button translations for new listing flow
 // Note 2: Ensure that draft listing is created after the first panel
@@ -459,6 +464,9 @@ class EditListingWizard extends Component {
     const accountId = stripeConnected ? stripeAccount.id : null;
     const stripeAccountData = stripeConnected ? getStripeAccountData(stripeAccount) : null;
 
+    console.log(stripeAccountData);
+    console.log(currentUser);
+
     const requirementsMissing =
       stripeAccount &&
       (hasRequirements(stripeAccountData, 'past_due') ||
@@ -478,6 +486,7 @@ class EditListingWizard extends Component {
     const returnedNormallyFromStripe = returnURLType === STRIPE_ONBOARDING_RETURN_URL_SUCCESS;
     const returnedAbnormallyFromStripe = returnURLType === STRIPE_ONBOARDING_RETURN_URL_FAILURE;
     const showVerificationNeeded = stripeConnected && requirementsMissing;
+    const detailsSubmitted = stripeAccountData ? stripeAccountData.details_submitted : null
 
     // Redirect from success URL to basic path for StripePayoutPage
     if (returnedNormallyFromStripe && stripeConnected && !requirementsMissing) {
@@ -531,9 +540,7 @@ class EditListingWizard extends Component {
         >
           <div className={css.modalPayoutDetailsWrapper}>
             <Heading as="h2" rootClassName={css.modalTitle}>
-              <FormattedMessage id="EditListingWizard.payoutModalTitleOneMoreThing" />
-              <br />
-              <FormattedMessage id="EditListingWizard.payoutModalTitlePayoutPreferences" />
+              <FormattedMessage id="EditListingWizard.payoutModalTitle" />
             </Heading>
             {!currentUserLoaded ? (
               <FormattedMessage id="StripePayoutPage.loadingData" />
@@ -546,6 +553,33 @@ class EditListingWizard extends Component {
                 <p className={css.modalMessage}>
                   <FormattedMessage id="EditListingWizard.payoutModalInfo" />
                 </p>
+                {/* Stripe verification status tracker */}
+                <ul>
+                  <li className={css.item}>
+                    <div className={css.labelWrapper}>
+                      <span className={css.itemLabel}>Bank details:&nbsp; </span>
+                    </div>
+                    <span className={css.iconWrapper}>
+                    {stripeAccount ? <IconCheckBadge/> : <IconExclamationMark/>}
+                    </span>
+                  </li>
+                  <li className={css.item}>
+                    <div className={css.labelWrapper}>
+                      <span className={css.itemLabel}>Personal details:&nbsp; </span>
+                    </div>
+                    <span className={css.iconWrapper}>
+                    {detailsSubmitted ? <IconCheckBadge/> : <IconExclamationMark/>}
+                    </span>
+                  </li>
+                  <li className={css.item}>
+                    <div className={css.labelWrapper}>
+                      <span className={css.itemLabel}>Additional documents:&nbsp; </span>
+                    </div>
+                    <span className={css.iconWrapper}>
+                    {stripeAccount && !showVerificationNeeded ? <IconCheckBadge/> : <IconCheckBadge/>}
+                    </span>
+                  </li>
+                </ul>
                 <StripeConnectAccountForm
                   disabled={formDisabled}
                   inProgress={payoutDetailsSaveInProgress}
