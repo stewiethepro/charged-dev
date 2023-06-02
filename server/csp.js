@@ -106,10 +106,17 @@ module.exports = (reportUri, reportOnly) => {
   // Example: extend default img directive with custom domain
   // const { imgSrc = [self] } = defaultDirectives;
   // const exampleImgSrc = imgSrc.concat('my-custom-domain.example.com');
+  const { scriptSrc = [self] } = defaultDirectives;
+  const intercomScriptSrc = scriptSrc.concat([
+    'https://app.intercom.io',
+    'https://widget.intercom.io',
+    'https://js.intercomcdn.com'
+  ]);
 
   const customDirectives = {
     // Example: Add custom directive override
     // imgSrc: exampleImgSrc,
+    scriptSrc: intercomScriptSrc,
   };
 
   // ================ END CUSTOM CSP URLs ================ //
