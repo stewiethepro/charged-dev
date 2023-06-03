@@ -88,7 +88,7 @@ app.use(
     // This seems to cause problems with Youtube player
     // Issue tracker: https://issuetracker.google.com/issues/240387105
     crossOriginEmbedderPolicy: false,
-    crossOriginOpenerPolicy: { policy: "same-origin-allow-popups" },
+    crossOriginOpenerPolicy: false,
   })
 );
 
