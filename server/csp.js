@@ -73,6 +73,7 @@ const defaultDirectives = {
 
     '*.stripe.com',
   ],
+  mediaSrc: [],
   scriptSrc: [
     self,
     unsafeInline,
@@ -107,16 +108,102 @@ module.exports = (reportUri, reportOnly) => {
   // const { imgSrc = [self] } = defaultDirectives;
   // const exampleImgSrc = imgSrc.concat('my-custom-domain.example.com');
   const { scriptSrc = [self] } = defaultDirectives;
+  const { connectSrc = [self] } = defaultDirectives;
+  const { childSrc = [self] } = defaultDirectives;
+  const { fontSrc = [self] } = defaultDirectives;
+  const { formAction = [self] } = defaultDirectives;
+  const { mediaSrc = [self] } = defaultDirectives;
+  const { imgSrc = [self] } = defaultDirectives;
+  const { styleSrc = [self] } = defaultDirectives;
+
   const intercomScriptSrc = scriptSrc.concat([
     'https://app.intercom.io',
     'https://widget.intercom.io',
     'https://js.intercomcdn.com'
+  ]);
+  const intercomConnectSrc = connectSrc.concat([
+    'https://via.intercom.io',
+    'https://api.intercom.io',
+    'https://api.au.intercom.io',
+    'https://api.eu.intercom.io',
+    'https://api-iam.intercom.io',
+    'https://api-iam.eu.intercom.io',
+    'https://api-iam.au.intercom.io',
+    'https://api-ping.intercom.io',  
+    'https://nexus-websocket-a.intercom.io',
+    'wss://nexus-websocket-a.intercom.io',
+    'https://nexus-websocket-b.intercom.io',
+    'wss://nexus-websocket-b.intercom.io',
+    'https://nexus-europe-websocket.intercom.io', 
+    'wss://nexus-europe-websocket.intercom.io', 
+    'https://nexus-australia-websocket.intercom.io',
+    'wss://nexus-australia-websocket.intercom.io', 
+    'https://uploads.intercomcdn.com',
+    'https://uploads.intercomcdn.eu', 
+    'https://uploads.au.intercomcdn.com', 
+    'https://uploads.intercomusercontent.com',
+  ]);
+  const intercomChildSrc = childSrc.concat([
+    'https://intercom-sheets.com',
+    'https://www.intercom-reporting.com',
+    'https://www.youtube.com',
+    'https://player.vimeo.com',
+    'https://fast.wistia.net',
+  ]);
+  const intercomFontSrc = fontSrc.concat([
+    'https://js.intercomcdn.com',
+    'https://fonts.intercomcdn.com',
+  ]);
+  const intercomFormAction = formAction.concat([
+    'https://intercom.help',
+    'https://api-iam.intercom.io',
+    'https://api-iam.eu.intercom.io',
+    'https://api-iam.au.intercom.io',
+  ]);
+  const intercomMediaSrc = mediaSrc.concat([
+    'https://js.intercomcdn.com',
+  ]);
+  const intercomImgSrc = imgSrc.concat([
+    'https://js.intercomcdn.com',
+    'https://static.intercomassets.com',
+    'https://downloads.intercomcdn.com',
+    'https://downloads.intercomcdn.eu',
+    'https://downloads.au.intercomcdn.com',
+    'https://uploads.intercomusercontent.com',
+    'https://gifs.intercomcdn.com',
+    'https://video-messages.intercomcdn.com',
+    'https://messenger-apps.intercom.io',
+    'https://messenger-apps.eu.intercom.io',
+    'https://messenger-apps.au.intercom.io',
+    'https://*.intercom-attachments-1.com',
+    'https://*.intercom-attachments.eu',
+    'https://*.au.intercom-attachments.com',
+    'https://*.intercom-attachments-2.com',
+    'https://*.intercom-attachments-3.com',
+    'https://*.intercom-attachments-4.com',
+    'https://*.intercom-attachments-5.com',
+    'https://*.intercom-attachments-6.com',
+    'https://*.intercom-attachments-7.com',
+    'https://*.intercom-attachments-8.com',
+    'https://*.intercom-attachments-9.com',
+    'https://static.intercomassets.eu',
+    'https://static.au.intercomassets.com',
+  ]);
+  const intercomStyleSrc = styleSrc.concat([
+    'unsafe-inline',
   ]);
 
   const customDirectives = {
     // Example: Add custom directive override
     // imgSrc: exampleImgSrc,
     scriptSrc: intercomScriptSrc,
+    connectSrc: intercomConnectSrc,
+    childSrc: intercomChildSrc,
+    fontSrc: intercomFontSrc,
+    formAction: intercomFormAction,
+    mediaSrc: intercomMediaSrc,
+    imgSrc: intercomImgSrc,
+    styleSrc: intercomStyleSrc,
   };
 
   // ================ END CUSTOM CSP URLs ================ //
