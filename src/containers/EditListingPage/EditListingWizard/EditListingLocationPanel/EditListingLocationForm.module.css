@@ -56,7 +56,7 @@
 }
 
 .building {
-  margin-top: -550px;
+  margin-top: -250px;
 }
 
 .submitButton {
@@ -71,5 +71,5 @@
 }
 
 .addressWrapper {
-  height: 100vh;
+  height: 400px;
 }
