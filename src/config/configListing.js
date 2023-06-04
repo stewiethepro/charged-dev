@@ -138,7 +138,7 @@ export const listingFields = [
     saveConfig: {
       label: 'Access Instructions',
       placeholderMessage: 'e.g. Access code for the front gate is 4487',
-      descriptionMessage:'Please outline any details about how to access your charger. This data will not be publicly visible and will only be shared with customers whose bookings you accept.',
+      descriptionMessage:'Please outline any details about how to access and use your charger. This data will not be publicly visible and will only be shared with customers whose bookings you accept.',
     },
   },
   // {

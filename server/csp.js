@@ -119,7 +119,7 @@ module.exports = (reportUri, reportOnly) => {
   const intercomScriptSrc = scriptSrc.concat([
     'https://app.intercom.io',
     'https://widget.intercom.io',
-    'https://js.intercomcdn.com'
+    'https://js.intercomcdn.com',
   ]);
   const intercomConnectSrc = connectSrc.concat([
     'https://via.intercom.io',

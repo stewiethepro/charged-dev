@@ -78,7 +78,7 @@ const EditListingPricingPanel = props => {
         <ExternalLink key="TallyCalculator" href={tallyRedirectLink}>
         calculator
         </ExternalLink>
-        &nbsp;to find the right price.
+        &nbsp;to work it out.
       </p>
 
       {priceCurrencyValid ? (

@@ -26,11 +26,11 @@ class LocationAutocompleteInputComponent extends Component {
     ) : null;
 
     return (
-      <div className={rootClassName}>
-        {labelInfo}
-        <LocationAutocompleteInputImpl {...locationAutocompleteProps} />
-        {hideErrorMessage ? null : <ValidationError fieldMeta={meta} />}
-      </div>
+        <div className={rootClassName}>
+          {labelInfo}
+          <LocationAutocompleteInputImpl {...locationAutocompleteProps} />
+          {hideErrorMessage ? null : <ValidationError fieldMeta={meta} />}
+        </div>
     );
   }
 }
