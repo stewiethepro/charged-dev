@@ -201,7 +201,7 @@ const EditListingDetailsFormComponent = props => (
             type="text"
             label={intl.formatMessage({ id: 'EditListingDetailsForm.title' })}
             placeholder={intl.formatMessage({ id: 'EditListingDetailsForm.titlePlaceholder' })}
-            description={intl.formatMessage({ id: 'EditListingDetailsForm.titleDescription' })}
+            // description={intl.formatMessage({ id: 'EditListingDetailsForm.titleDescription' })}
             maxLength={TITLE_MAX_LENGTH}
             validate={composeValidators(required(titleRequiredMessage), maxLength60Message)}
             autoFocus={autoFocus}
@@ -213,7 +213,7 @@ const EditListingDetailsFormComponent = props => (
             className={css.description}
             type="textarea"
             label={intl.formatMessage({ id: 'EditListingDetailsForm.description' })}
-            description={intl.formatMessage({ id: 'EditListingDetailsForm.descriptionDescription' })}
+            // description={intl.formatMessage({ id: 'EditListingDetailsForm.descriptionDescription' })}
             placeholder={intl.formatMessage({
               id: 'EditListingDetailsForm.descriptionPlaceholder',
             })}

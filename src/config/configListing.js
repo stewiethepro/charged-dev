@@ -71,7 +71,7 @@ export const listingFields = [
       placeholderMessage: 'Select a connector type...',
       isRequired: true,
       requiredMessage: 'You need to select a connector type.',
-      descriptionMessage:'If customers can plug in their own cable, you can select all of the options below. If customers have to use your cable, please select your cable\'s connector type.',
+      // descriptionMessage:'If customers can plug in their own cable, you can select all of the options below. If customers have to use your cable, please select your cable\'s connector type.',
     },
   },
   {
@@ -100,7 +100,7 @@ export const listingFields = [
       placeholderMessage: 'Select a power output...',
       isRequired: true,
       requiredMessage: 'You need to select a power output.',
-      descriptionMessage:'If you plug your cable straight into a standard 3-pin wall socket then you can select 2.3 kW. If you\'ve had a dedicated home EV charger installed then it\'ll be between 3.7 kW and 22 kW.',
+      // descriptionMessage:'If you plug your cable straight into a standard 3-pin wall socket then you can select 2.3 kW. If you\'ve had a dedicated home EV charger installed then it\'ll be between 3.7 kW and 22 kW.',
     },
   },
   {
@@ -128,7 +128,7 @@ export const listingFields = [
       placeholderMessage: 'Select access type...',
       isRequired: true,
       requiredMessage: 'You need to select an access type.',
-      descriptionMessage:'Where is your charger located? If you want to describe it in more detail then you can use the listing description field above.',
+      // descriptionMessage:'Where is your charger located? If you want to describe it in more detail then you can use the listing description field above.',
     },
   },
   {
@@ -138,7 +138,7 @@ export const listingFields = [
     saveConfig: {
       label: 'Access Instructions',
       placeholderMessage: 'e.g. Access code for the front gate is 4487',
-      descriptionMessage:'Please outline any details about how to access and use your charger. This data will not be publicly visible and will only be shared with customers whose bookings you accept.',
+      // descriptionMessage:'Please outline any details about how to access and use your charger. This data will not be publicly visible and will only be shared with customers whose bookings you accept.',
     },
   },
   // {
