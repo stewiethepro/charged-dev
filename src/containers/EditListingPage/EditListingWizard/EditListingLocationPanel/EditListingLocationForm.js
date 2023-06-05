@@ -67,7 +67,7 @@ export const EditListingLocationFormComponent = props => (
 
       return (
         <Form className={classes} onSubmit={handleSubmit}>
-          <div className={css.addressWrapper}>
+          {/* <div className={css.addressWrapper}> */}
           {updateListingError ? (
             <p className={css.error}>
               <FormattedMessage id="EditListingLocationForm.updateFailed" />
@@ -101,7 +101,7 @@ export const EditListingLocationFormComponent = props => (
             )}
           />
 
-          </div>
+          {/* </div> */}
 
           <FieldTextInput
             className={css.building}

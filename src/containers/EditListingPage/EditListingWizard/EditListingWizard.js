@@ -487,12 +487,13 @@ class EditListingWizard extends Component {
     const returnedAbnormallyFromStripe = returnURLType === STRIPE_ONBOARDING_RETURN_URL_FAILURE;
     const showVerificationNeeded = stripeConnected && requirementsMissing;
     const detailsPresent = stripeAccountData ? 
+    stripeAccountData.individual ?
       stripeAccountData.individual.address && 
       stripeAccountData.individual.dob &&
       stripeAccountData.individual.email &&
       stripeAccountData.individual.first_name &&
       stripeAccountData.individual.last_name &&
-      stripeAccountData.individual.phone : null
+      stripeAccountData.individual.phone : null : null
     const detailsSubmitted = stripeAccountData ? stripeAccountData.details_submitted || detailsPresent : null
     const stripeVerificationComplete = stripeAccount && detailsSubmitted && !showVerificationNeeded
 
