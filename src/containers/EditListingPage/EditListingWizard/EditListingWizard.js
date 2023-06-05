@@ -486,7 +486,15 @@ class EditListingWizard extends Component {
     const returnedNormallyFromStripe = returnURLType === STRIPE_ONBOARDING_RETURN_URL_SUCCESS;
     const returnedAbnormallyFromStripe = returnURLType === STRIPE_ONBOARDING_RETURN_URL_FAILURE;
     const showVerificationNeeded = stripeConnected && requirementsMissing;
-    const detailsSubmitted = stripeAccountData ? stripeAccountData.details_submitted : null
+    const detailsPresent = stripeAccountData ? 
+      stripeAccountData.individual.address && 
+      stripeAccountData.individual.dob &&
+      stripeAccountData.individual.email &&
+      stripeAccountData.individual.first_name &&
+      stripeAccountData.individual.last_name &&
+      stripeAccountData.individual.phone : null
+    const detailsSubmitted = stripeAccountData ? stripeAccountData.details_submitted || detailsPresent : null
+    const stripeVerificationComplete = stripeAccount && detailsSubmitted && !showVerificationNeeded
 
     // Redirect from success URL to basic path for StripePayoutPage
     if (returnedNormallyFromStripe && stripeConnected && !requirementsMissing) {
@@ -554,10 +562,19 @@ class EditListingWizard extends Component {
                   <FormattedMessage id="EditListingWizard.payoutModalInfo" />
                 </p>
                 {/* Stripe verification status tracker */}
+                <p className={css.modalMessage}>
+                  Verification steps completed: <span className={stripeVerificationComplete ? css.stepsSuccess : css.stepsFail}>{stripeAccount ? detailsSubmitted ? !showVerificationNeeded ? '3/3' : '2/3' : '1/3' : '0/3'}</span>
+                </p>
+                <p className={css.itemStatus}>
+                  {stripeVerificationComplete ? 'Great job, your account has been verified!' : 'Please complete the verification steps below'}
+                </p>
                 <ul>
                   <li className={css.item}>
                     <div className={css.labelWrapper}>
-                      <span className={css.itemLabel}>Bank details:&nbsp; </span>
+                      <span className={css.itemLabel}>Account type:&nbsp; </span>
+                      <span className={css.itemStatus}> 
+                      {stripeAccount ? 'Completed'  : 'Incomplete' }
+                      &nbsp;</span>
                     </div>
                     <span className={css.iconWrapper}>
                     {stripeAccount ? <IconCheckBadge/> : <IconExclamationMark/>}
@@ -566,6 +583,9 @@ class EditListingWizard extends Component {
                   <li className={css.item}>
                     <div className={css.labelWrapper}>
                       <span className={css.itemLabel}>Personal details:&nbsp; </span>
+                      <span className={css.itemStatus}> 
+                      {detailsSubmitted ? 'Completed'  : 'Incomplete' }
+                      &nbsp;</span>
                     </div>
                     <span className={css.iconWrapper}>
                     {detailsSubmitted ? <IconCheckBadge/> : <IconExclamationMark/>}
@@ -574,9 +594,12 @@ class EditListingWizard extends Component {
                   <li className={css.item}>
                     <div className={css.labelWrapper}>
                       <span className={css.itemLabel}>Additional documents:&nbsp; </span>
+                      <span className={css.itemStatus}> 
+                      {stripeAccount && !showVerificationNeeded ? 'Completed'  : 'Incomplete' }
+                      &nbsp;</span>
                     </div>
                     <span className={css.iconWrapper}>
-                    {stripeAccount && !showVerificationNeeded ? <IconCheckBadge/> : <IconCheckBadge/>}
+                    {stripeAccount && !showVerificationNeeded ? <IconCheckBadge/> : <IconExclamationMark/>}
                     </span>
                   </li>
                 </ul>

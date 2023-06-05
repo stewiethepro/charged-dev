@@ -127,7 +127,7 @@ const ConfirmSignupFormComponent = props => (
                   id: 'SignupForm.registrationRequired',
                 })
               )}
-              description= "This helps charger owners know who to expect"
+              // description= "This helps charger owners know who to expect"
             />
           </div>
 
