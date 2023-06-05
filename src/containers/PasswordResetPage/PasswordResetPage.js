@@ -101,6 +101,7 @@ export const PasswordResetPageComponent = props => {
     resetPasswordInProgress,
     resetPasswordError,
     onSubmitPassword,
+    currentUser,
   } = props;
 
   const { token, email } = parseUrlParams(location);
