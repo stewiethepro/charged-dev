@@ -108,6 +108,18 @@ class ProfileSettingsFormComponent extends Component {
             id: 'ProfileSettingsForm.bioPlaceholder',
           });
 
+          // Registration
+          const registrationLabel = intl.formatMessage({
+            id: 'ProfileSettingsForm.registrationLabel',
+          });
+          const registrationPlaceholder = intl.formatMessage({
+            id: 'ProfileSettingsForm.registrationPlaceholder',
+          });
+          const registrationRequiredMessage = intl.formatMessage({
+            id: 'ProfileSettingsForm.registrationRequired',
+          });
+          const registrationRequired = validators.required(registrationRequiredMessage);
+
           const uploadingOverlay =
             uploadInProgress || this.state.uploadDelay ? (
               <div className={css.uploadingImageOverlay}>
@@ -286,6 +298,22 @@ class ProfileSettingsFormComponent extends Component {
                     label={lastNameLabel}
                     placeholder={lastNamePlaceholder}
                     validate={lastNameRequired}
+                  />
+                </div>
+              </div>
+              <div className={css.sectionContainer}>
+                <H4 as="h2" className={css.sectionTitle}>
+                  <FormattedMessage id="ProfileSettingsForm.yourRegistration" />
+                </H4>
+                <div className={css.nameContainer}>
+                  <FieldTextInput
+                    className={css.registration}
+                    type="text"
+                    id="registration"
+                    name="registration"
+                    label={registrationLabel}
+                    placeholder={registrationPlaceholder}
+                    validate={registrationRequired}
                   />
                 </div>
               </div>
