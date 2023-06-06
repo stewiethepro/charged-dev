@@ -188,6 +188,7 @@ module.exports = (reportUri, reportOnly) => {
     'https://*.intercom-attachments-9.com',
     'https://static.intercomassets.eu',
     'https://static.au.intercomassets.com',
+    'https://api-iam.intercom.io/messenger/web/embedded/content',
   ]);
   const intercomStyleSrc = styleSrc.concat([
     'unsafe-inline',
