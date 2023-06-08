@@ -112,6 +112,7 @@ module.exports = (reportUri, reportOnly) => {
   const { childSrc = [self] } = defaultDirectives;
   const { fontSrc = [self] } = defaultDirectives;
   const { formAction = [self] } = defaultDirectives;
+  const { frameSrc = [self] } = defaultDirectives;
   const { mediaSrc = [self] } = defaultDirectives;
   const { imgSrc = [self] } = defaultDirectives;
   const { styleSrc = [self] } = defaultDirectives;
@@ -120,7 +121,6 @@ module.exports = (reportUri, reportOnly) => {
     'https://app.intercom.io',
     'https://widget.intercom.io',
     'https://js.intercomcdn.com',
-    'https://intercom-sheets.com'
   ]);
   const intercomConnectSrc = connectSrc.concat([
     'https://via.intercom.io',
@@ -160,6 +160,9 @@ module.exports = (reportUri, reportOnly) => {
     'https://api-iam.intercom.io',
     'https://api-iam.eu.intercom.io',
     'https://api-iam.au.intercom.io',
+  ]);
+  const intercomFrameSrc = formAction.concat([
+    'https://intercom-sheets.com',
   ]);
   const intercomMediaSrc = mediaSrc.concat([
     'https://js.intercomcdn.com',
@@ -202,6 +205,7 @@ module.exports = (reportUri, reportOnly) => {
     childSrc: intercomChildSrc,
     fontSrc: intercomFontSrc,
     formAction: intercomFormAction,
+    frameSrc: intercomFrameSrc,
     mediaSrc: intercomMediaSrc,
     imgSrc: intercomImgSrc,
     styleSrc: intercomStyleSrc,
