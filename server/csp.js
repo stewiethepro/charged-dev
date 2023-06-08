@@ -161,7 +161,7 @@ module.exports = (reportUri, reportOnly) => {
     'https://api-iam.eu.intercom.io',
     'https://api-iam.au.intercom.io',
   ]);
-  const intercomFrameSrc = formAction.concat([
+  const intercomFrameSrc = frameSrc.concat([
     'https://intercom-sheets.com',
   ]);
   const intercomMediaSrc = mediaSrc.concat([
