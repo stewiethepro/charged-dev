@@ -230,7 +230,7 @@ const EditListingDetailsPanel = props => {
       </H3>
 
       <p className={css.description}>
-        Fill in some details about your charger. We've made a&nbsp;
+        Fill in details about your charger. We've made a&nbsp;
           <ExternalLink key="TallyChargerType" href={tallyRedirectLink}>
           handy tool
           </ExternalLink>
