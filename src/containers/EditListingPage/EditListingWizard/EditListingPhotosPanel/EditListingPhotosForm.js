@@ -152,6 +152,7 @@ export const EditListingPhotosFormComponent = props => {
           errors,
           values,
           listingImageConfig,
+          stripeVerificationComplete,
         } = formRenderProps;
 
         const images = values.images;
@@ -256,6 +257,12 @@ export const EditListingPhotosFormComponent = props => {
 
             <PublishListingError error={publishListingError} />
             <ShowListingsError error={showListingsError} />
+
+            {!stripeVerificationComplete && !submitDisabled ?
+            <p className={css.verificationMessage}>
+              <FormattedMessage id="EditListingPhotosForm.stripeVerificationRequiredMessage" />
+            </p>
+            : null}
 
             <Button
               className={css.submitButton}

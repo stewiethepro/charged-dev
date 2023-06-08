@@ -536,6 +536,7 @@ class EditListingWizard extends Component {
                 config={config}
                 routeConfiguration={routeConfiguration}
                 currentUser={currentUser}
+                stripeVerificationComplete={stripeVerificationComplete}
               />
             );
           })}

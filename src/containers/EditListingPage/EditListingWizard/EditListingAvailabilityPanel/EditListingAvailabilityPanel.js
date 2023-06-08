@@ -9,7 +9,7 @@ import { LISTING_STATE_DRAFT, propTypes } from '../../../../util/types';
 import { DAY, isFullDay } from '../../../../transactions/transaction';
 
 // Import shared components
-import { Button, H3, InlineTextButton, ListingLink, Modal } from '../../../../components';
+import { Button, SecondaryButton, H3, InlineTextButton, ListingLink, Modal } from '../../../../components';
 
 // Import modules from this directory
 import EditListingAvailabilityPlanForm from './EditListingAvailabilityPlanForm';
@@ -228,8 +228,8 @@ const EditListingAvailabilityPanel = props => {
           </p>
         ) : null}
 
-        <InlineTextButton
-          className={css.editPlanButton}
+        <Button
+          className={css.editAvailabilityButton}
           onClick={() => setIsEditPlanModalOpen(true)}
         >
           {hasAvailabilityPlan ? (
@@ -237,7 +237,18 @@ const EditListingAvailabilityPanel = props => {
           ) : (
             <FormattedMessage id="EditListingAvailabilityPanel.setAvailabilityPlan" />
           )}
-        </InlineTextButton>
+        </Button>
+
+        {hasAvailabilityPlan ? 
+        <SecondaryButton
+          className={css.availabilityExceptionButton}
+          onClick={() => setIsEditExceptionsModalOpen(true)}
+          disabled={disabled || !hasAvailabilityPlan}
+          ready={ready}
+        >
+          <FormattedMessage id="EditListingAvailabilityPanel.addException" />
+        </SecondaryButton>
+        : null}
       </div>
 
       {hasAvailabilityPlan ? (
@@ -261,14 +272,14 @@ const EditListingAvailabilityPanel = props => {
           />
 
           <section className={css.section}>
-            <InlineTextButton
+            {/* <InlineTextButton
               className={css.addExceptionButton}
               onClick={() => setIsEditExceptionsModalOpen(true)}
               disabled={disabled || !hasAvailabilityPlan}
               ready={ready}
             >
               <FormattedMessage id="EditListingAvailabilityPanel.addException" />
-            </InlineTextButton>
+            </InlineTextButton> */}
           </section>
         </>
       ) : null}

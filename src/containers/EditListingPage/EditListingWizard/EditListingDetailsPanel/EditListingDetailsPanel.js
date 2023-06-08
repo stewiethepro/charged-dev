@@ -8,7 +8,7 @@ import { EXTENDED_DATA_SCHEMA_TYPES, LISTING_STATE_DRAFT } from '../../../../uti
 import { isBookingProcessAlias } from '../../../../transactions/transaction';
 
 // Import shared components
-import { H3, ListingLink, Button, ExternalLink } from '../../../../components';
+import { H3, ListingLink, Button, ExternalLink, NamedLink } from '../../../../components';
 
 // Import modules from this directory
 import ErrorMessage from './ErrorMessage';
@@ -234,7 +234,10 @@ const EditListingDetailsPanel = props => {
           <ExternalLink key="TallyChargerType" href={tallyRedirectLink}>
           handy tool
           </ExternalLink>
-          &nbsp;to help you understand what type of charger you have.
+          &nbsp;to help you understand what type of charger you have. If you accidentally close this page halfway through, we save your drafts&nbsp;
+          <NamedLink
+            name="ManageListingsPage"
+          >here</NamedLink>.
       </p>
 
       {canShowEditListingDetailsForm ? (

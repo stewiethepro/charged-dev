@@ -84,3 +84,27 @@
 .error {
   color: var(--colorFail);
 }
+
+.editAvailabilityButton {
+  margin-top: auto;
+  margin-bottom: 24px;
+  flex-shrink: 0;
+
+  @media (--viewportLarge) {
+    display: inline-block;
+    width: 241px;
+  }
+}
+
+.availabilityExceptionButton {
+  margin-top: auto;
+  margin-bottom: 24px;
+  flex-shrink: 0;
+  background-color: var(--colorFail);
+
+  @media (--viewportLarge) {
+    display: inline-block;
+    width: 241px;
+    margin-left: 24px;
+  }
+}

@@ -159,3 +159,17 @@
     margin-top: 100px;
   }
 }
+
+.verificationMessage {
+  composes: h5 from global;
+
+  flex-shrink: 0;
+  color: var(--colorFail);
+  margin-top: 60px;
+  margin-bottom: 24px;
+
+  @media (--viewportLarge) {
+    margin-top: 100px;
+    margin-bottom: -76px;
+  }
+}

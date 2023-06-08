@@ -33,6 +33,7 @@ const EditListingPhotosPanel = props => {
     onSubmit,
     onRemoveImage,
     listingImageConfig,
+    stripeVerificationComplete,
   } = props;
 
   const rootClass = rootClassName || css.root;
@@ -75,6 +76,7 @@ const EditListingPhotosPanel = props => {
         updated={panelUpdated}
         updateInProgress={updateInProgress}
         listingImageConfig={listingImageConfig}
+        stripeVerificationComplete={stripeVerificationComplete}
       />
     </div>
   );

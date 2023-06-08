@@ -104,6 +104,7 @@ const EditListingWizardTab = props => {
     config,
     routeConfiguration,
     currentUser,
+    stripeVerificationComplete,
   } = props;
 
   const { type } = params;
@@ -251,6 +252,7 @@ const EditListingWizardTab = props => {
           images={images}
           onImageUpload={onImageUpload}
           onRemoveImage={onRemoveImage}
+          stripeVerificationComplete={stripeVerificationComplete}
         />
       );
     }
