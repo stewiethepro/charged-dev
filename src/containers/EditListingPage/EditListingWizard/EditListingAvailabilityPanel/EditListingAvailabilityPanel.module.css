@@ -100,7 +100,6 @@
   margin-top: auto;
   margin-bottom: 24px;
   flex-shrink: 0;
-  background-color: var(--colorFail);
 
   @media (--viewportLarge) {
     display: inline-block;
