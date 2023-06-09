@@ -72,6 +72,17 @@ const TopbarDesktop = props => {
     </NamedLink>
   ) : null;
 
+  const manageListings = authenticatedOnClientSide ? (
+    <NamedLink
+      className={css.yourListingsLink}
+      name="ManageListingsPage"
+    >
+      <span className={css.yourListings}>
+        <FormattedMessage id="TopbarDesktop.yourListingsLink" />
+      </span>
+    </NamedLink>
+  ) : null;
+
   const currentPageClass = page => {
     const isAccountSettingsPage =
       page === 'AccountSettingsPage' && ACCOUNT_SETTINGS_PAGES.includes(currentPage);
@@ -84,7 +95,7 @@ const TopbarDesktop = props => {
         <Avatar className={css.avatar} user={currentUser} disableProfileLink />
       </MenuLabel>
       <MenuContent className={css.profileMenuContent}>
-        <MenuItem key="ManageListingsPage">
+        {/* <MenuItem key="ManageListingsPage">
           <NamedLink
             className={classNames(css.yourListingsLink, currentPageClass('ManageListingsPage'))}
             name="ManageListingsPage"
@@ -92,7 +103,7 @@ const TopbarDesktop = props => {
             <span className={css.menuItemBorder} />
             <FormattedMessage id="TopbarDesktop.yourListingsLink" />
           </NamedLink>
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem key="ProfileSettingsPage">
           <NamedLink
             className={classNames(css.profileSettingsLink, currentPageClass('ProfileSettingsPage'))}
@@ -104,7 +115,7 @@ const TopbarDesktop = props => {
         </MenuItem>
         <MenuItem key="AccountSettingsPage">
           <NamedLink
-            className={classNames(css.yourListingsLink, currentPageClass('AccountSettingsPage'))}
+            className={classNames(css.profileSettingsLink, currentPageClass('AccountSettingsPage'))}
             name="AccountSettingsPage"
           >
             <span className={css.menuItemBorder} />
@@ -151,6 +162,7 @@ const TopbarDesktop = props => {
         </span>
       </NamedLink>
       {inboxLink}
+      {manageListings}
       {profileMenu}
       {signupLink}
       {loginLink}

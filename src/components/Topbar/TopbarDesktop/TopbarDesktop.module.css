@@ -275,8 +275,7 @@
   transition: width var(--transitionStyleButton);
 }
 
-.profileSettingsLink,
-.yourListingsLink {
+.profileSettingsLink {
   composes: textSmall from global;
   position: relative;
   display: block;
@@ -304,6 +303,39 @@
   @media (--viewportMedium) {
     margin: 0;
   }
+}
+
+/* Inbox */
+.yourListingsLink {
+  border-bottom: 0px solid;
+  transition: var(--transitionStyleButton);
+
+  font-weight: var(--fontWeightMedium);
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0;
+  color: var(--colorGrey700);
+
+  height: 100%;
+  padding: 0 12px 0 12px;
+  margin: 0;
+
+  &:hover {
+    color: var(--colorBlack);
+    border-bottom: 4px solid var(--marketplaceColor);
+    border-radius: 0;
+    text-decoration: none;
+  }
+
+  @media (--viewportMedium) {
+    line-height: 16px;
+    margin: 0;
+  }
+}
+
+.yourListings {
+  composes: topbarDesktopLabel;
+  position: relative;
 }
 
 .logoutButton {
