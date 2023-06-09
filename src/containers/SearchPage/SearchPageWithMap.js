@@ -359,12 +359,23 @@ export class SearchPageComponent extends Component {
         />
       ) : null;
     };
-    const noResultsInfo = (
+    const noResultsInfoDesktop = (
       <NoSearchResultsMaybe
         listingsAreLoaded={listingsAreLoaded}
         totalItems={totalItems}
         location={location}
         resetAll={this.resetAll}
+        mobile={false}
+      />
+    );
+
+    const noResultsInfoMobile = (
+      <NoSearchResultsMaybe
+        listingsAreLoaded={listingsAreLoaded}
+        totalItems={totalItems}
+        location={location}
+        resetAll={this.resetAll}
+        mobile={true}
       />
     );
 
@@ -434,7 +445,7 @@ export class SearchPageComponent extends Component {
               onCloseModal={this.onCloseMobileModal}
               resetAll={this.resetAll}
               selectedFiltersCount={selectedFiltersCountForMobile}
-              noResultsInfo={noResultsInfo}
+              noResultsInfo={noResultsInfoMobile}
               isMapVariant
             >
               {availableFilters.map(config => {
@@ -462,7 +473,7 @@ export class SearchPageComponent extends Component {
               resultsCount={totalItems}
               searchInProgress={searchInProgress}
               searchListingsError={searchListingsError}
-              noResultsInfo={noResultsInfo}
+              noResultsInfo={noResultsInfoDesktop}
             >
               <SearchFiltersPrimary {...propsForSecondaryFiltersToggle}>
                 {availablePrimaryFilters.map(config => {
