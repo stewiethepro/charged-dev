@@ -75,7 +75,7 @@ export const EmailVerificationPageComponent = props => {
   // Boot Intercom
 
   if (typeof window !== "undefined") {
-    if (currentUser) {
+    if (currentUser && currentUser.attributes.emailVerified) {
       window.Intercom("boot", {
         api_base: "https://api-iam.intercom.io",
         app_id: "qv2ju58e",
