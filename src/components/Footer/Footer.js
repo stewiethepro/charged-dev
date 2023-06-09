@@ -61,6 +61,9 @@ const Footer = props => {
   const { siteHelpCentrePage } = config
   const classes = classNames(rootClassName || css.root, className);
 
+  const tallyChargerTypeRedirectLink = 'https://tally.so/r/nWr0kL?'
+  const tallyCalculatorRedirectLink = 'https://tally.so/r/nWr02Q?'
+
   return (
     <div className={classes}>
       <div className={css.topBorderWrapper}>
@@ -98,6 +101,16 @@ const Footer = props => {
                   <NamedLink name="NewListingPage" className={css.link}>
                     <FormattedMessage id="Footer.toNewListingPage" />
                   </NamedLink>
+                </li>
+                <li className={css.listItem}>
+                  <ExternalLink key="TallyChargerType" href={tallyChargerTypeRedirectLink} className={css.link}>
+                    <FormattedMessage id="Footer.toTallyChargerType" />
+                  </ExternalLink>
+                </li>
+                <li className={css.listItem}>
+                  <ExternalLink key="TallyCalculator" href={tallyCalculatorRedirectLink} className={css.link}>
+                    <FormattedMessage id="Footer.toTallyCalculator" />
+                  </ExternalLink>
                 </li>
                 <li className={css.listItem}>
                   <ExternalLink key="HelpCentrePage" href={siteHelpCentrePage} className={css.link}>
