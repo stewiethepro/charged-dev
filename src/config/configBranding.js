@@ -1,5 +1,5 @@
-import logoImageDesktop from '../assets/chargemate-logo-desktop.png';
-import logoImageMobile from '../assets/chargemate-logo-mobile.png';
+import logoImageDesktop from '../assets/charged-logo-desktop.png';
+import logoImageMobile from '../assets/charged-logo-mobile.png';
 import brandImage from '../assets/girl-with-ev.jpg';
 import facebookImage from '../assets/biketribe-facebook-sharing-1200x630.jpg';
 import twitterImage from '../assets/biketribe-twitter-sharing-600x314.jpg';
