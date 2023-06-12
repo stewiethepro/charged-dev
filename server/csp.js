@@ -117,12 +117,13 @@ module.exports = (reportUri, reportOnly) => {
   const { imgSrc = [self] } = defaultDirectives;
   const { styleSrc = [self] } = defaultDirectives;
 
-  const intercomScriptSrc = scriptSrc.concat([
+  const customScriptSrc = scriptSrc.concat([
     'https://app.intercom.io',
     'https://widget.intercom.io',
     'https://js.intercomcdn.com',
+    'https://app.viral-loops.com',
   ]);
-  const intercomConnectSrc = connectSrc.concat([
+  const customConnectSrc = connectSrc.concat([
     'https://via.intercom.io',
     'https://api.intercom.io',
     'https://api.au.intercom.io',
@@ -144,30 +145,30 @@ module.exports = (reportUri, reportOnly) => {
     'https://uploads.au.intercomcdn.com', 
     'https://uploads.intercomusercontent.com',
   ]);
-  const intercomChildSrc = childSrc.concat([
+  const customChildSrc = childSrc.concat([
     'https://intercom-sheets.com',
     'https://www.intercom-reporting.com',
     'https://www.youtube.com',
     'https://player.vimeo.com',
     'https://fast.wistia.net',
   ]);
-  const intercomFontSrc = fontSrc.concat([
+  const customFontSrc = fontSrc.concat([
     'https://js.intercomcdn.com',
     'https://fonts.intercomcdn.com',
   ]);
-  const intercomFormAction = formAction.concat([
+  const customFormAction = formAction.concat([
     'https://intercom.help',
     'https://api-iam.intercom.io',
     'https://api-iam.eu.intercom.io',
     'https://api-iam.au.intercom.io',
   ]);
-  const intercomFrameSrc = frameSrc.concat([
+  const customFrameSrc = frameSrc.concat([
     'https://intercom-sheets.com',
   ]);
-  const intercomMediaSrc = mediaSrc.concat([
+  const customMediaSrc = mediaSrc.concat([
     'https://js.intercomcdn.com',
   ]);
-  const intercomImgSrc = imgSrc.concat([
+  const customImgSrc = imgSrc.concat([
     'https://js.intercomcdn.com',
     'https://static.intercomassets.com',
     'https://downloads.intercomcdn.com',
@@ -193,22 +194,22 @@ module.exports = (reportUri, reportOnly) => {
     'https://static.intercomassets.eu',
     'https://static.au.intercomassets.com',
   ]);
-  const intercomStyleSrc = styleSrc.concat([
+  const customStyleSrc = styleSrc.concat([
     'unsafe-inline',
   ]);
 
   const customDirectives = {
     // Example: Add custom directive override
     // imgSrc: exampleImgSrc,
-    scriptSrc: intercomScriptSrc,
-    connectSrc: intercomConnectSrc,
-    childSrc: intercomChildSrc,
-    fontSrc: intercomFontSrc,
-    formAction: intercomFormAction,
-    frameSrc: intercomFrameSrc,
-    mediaSrc: intercomMediaSrc,
-    imgSrc: intercomImgSrc,
-    styleSrc: intercomStyleSrc,
+    scriptSrc: customScriptSrc,
+    connectSrc: customConnectSrc,
+    childSrc: customChildSrc,
+    fontSrc: customFontSrc,
+    formAction: customFormAction,
+    frameSrc: customFrameSrc,
+    mediaSrc: customMediaSrc,
+    imgSrc: customImgSrc,
+    styleSrc: customStyleSrc,
   };
 
   // ================ END CUSTOM CSP URLs ================ //
