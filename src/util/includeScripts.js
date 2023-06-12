@@ -118,6 +118,19 @@ export const IncludeScripts = props => {
     }
   };
 
+
+  // Viral loops
+  let viralLoopsLibraries = [];
+
+  viralLoopsLibraries.push(
+    <script
+        key="viralLoops.js"
+        async
+        src="https://app.viral-loops.com/widgetsV2/core/loader.js"
+        crossOrigin
+    ></script>
+  );
+
   // React Helmet Async doesn't support onLoad prop for scripts.
   // However, it does have onChangeClientState functionality.
   // We can use that to start listen 'load' events when the library is added on client-side.
@@ -132,6 +145,6 @@ export const IncludeScripts = props => {
     }
   };
 
-  const allScripts = [...analyticsLibraries, ...mapLibraries];
+  const allScripts = [...analyticsLibraries, ...mapLibraries, ...viralLoopsLibraries];
   return <Helmet onChangeClientState={onChangeClientState}>{allScripts}</Helmet>;
 };

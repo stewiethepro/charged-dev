@@ -31,3 +31,7 @@
   float: right;
   flex-shrink: 0;
 }
+
+.formEmail{
+  display: none;
+}

@@ -79,12 +79,6 @@ export const SocialLoginButtonsMaybe = props => {
     return { baseUrl, fromParam, defaultReturnParam, defaultConfirmParam };
   };
 
-  const useQuery = () => new URLSearchParams(useLocation().search);
-  
-  const query = useQuery();
-  // const tallyId = query.get('tallyId');
-  // const location = query.get('location');
-
   const authWithFacebook = () => {
     const defaultRoutes = getDefaultRoutes();
     const { baseUrl, fromParam, defaultReturnParam, defaultConfirmParam } = defaultRoutes;
@@ -359,6 +353,7 @@ export const AuthenticationPageComponent = props => {
     if (authError) {
       Cookies.remove('st-autherror');
     }
+
   }, []);
 
   // On mobile, it's better to scroll to top.
@@ -454,6 +449,94 @@ export const AuthenticationPageComponent = props => {
         app_id: "qv2ju58e",
       });
     }
+  }
+
+  // Viral loops registration
+  const viralLoopsCampaignId = 'DdlqvbNBLN7j7whSMe3xtCjxsdE'
+  
+  const useQuery = () => new URLSearchParams(useLocation().search);
+  const query = useQuery();
+  const referralCode = query.get('referralCode');
+  const refSource = query.get('refSource');
+  const referrer = {referralCode: referralCode, refSource: refSource}
+
+  async function registerViralLoopsUser(user, referrer) {
+
+    let body = {}
+
+    referrer.referralCode ?
+    body = JSON.stringify({
+      user: user,
+      referrer: {referralCode: referralCode},
+      publicToken: viralLoopsCampaignId,
+      refSource: refSource
+    })
+    : 
+    body = JSON.stringify({
+      user: user,
+      publicToken: viralLoopsCampaignId,
+    })
+
+    console.log('body: ', body);
+
+    const options = {
+      method: 'POST',
+      headers: {accept: 'application/json', 'content-type': 'application/json'},
+      body
+    };
+
+    console.log('options: ', options);
+    
+    fetch('https://app.viral-loops.com/api/v3/campaign/participant', options)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(err => console.error(err));
+
+  }
+
+  // async function participateInViralLoops(user) {
+
+  //   console.log('flumpy');
+
+  //   // Get campaign by ID
+  //   const campaign = await ViralLoops.getCampaign(viralLoopsCampaignId);
+  //   console.log("campaign: ", campaign);
+
+  //   const referrerResponse = await campaign.setReferrer(referrer)
+  //   console.log("referrerResponse: ", referrerResponse);
+
+  //   // Identify user in campaign
+  //   console.log('[Viral Loops] Identifying...', user);
+  //   const response = await campaign.identify(user)
+  //     .catch(error => {
+  //       console.error("[Viral Loops] Participation error", error);
+  //     });
+ 
+  //   // Log response
+  //   if (response.isNew) {
+  //        console.log('[Viral Loops] ✅ Participation completed!');
+  //        console.log('VL response: ', response);
+  //   } else {
+  //        console.log('[Viral Loops] ✅ Identified participant!');
+  //        console.log('VL response: ', response);
+  //   }
+  // }
+
+  if (currentUser) {
+    // User object with first name, last name, and email
+    const viralLoopsUser = {
+        firstname: currentUser.attributes.profile.firstName,
+        lastname: currentUser.attributes.profile.lastName,
+        email: currentUser.attributes.email
+    };
+
+    console.log('viralLoopsUser: ', viralLoopsUser);
+
+    // participateInViralLoops(viralLoopsUser, referrer);
+    registerViralLoopsUser(viralLoopsUser, referrer);
+
+  } else {
+    console.log('no user: ', currentUser);
   }
 
   return (
