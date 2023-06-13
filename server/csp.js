@@ -122,6 +122,7 @@ module.exports = (reportUri, reportOnly) => {
     'https://widget.intercom.io',
     'https://js.intercomcdn.com',
     'https://app.viral-loops.com',
+    'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js',
   ]);
   const customConnectSrc = connectSrc.concat([
     'https://via.intercom.io',
