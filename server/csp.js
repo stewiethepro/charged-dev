@@ -123,6 +123,8 @@ module.exports = (reportUri, reportOnly) => {
     'https://js.intercomcdn.com',
     'https://app.viral-loops.com',
     'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
+    'https://res.cloudinary.com/vrlps',
   ]);
   const customConnectSrc = connectSrc.concat([
     'https://via.intercom.io',
@@ -198,6 +200,8 @@ module.exports = (reportUri, reportOnly) => {
   ]);
   const customStyleSrc = styleSrc.concat([
     'unsafe-inline',
+    'https://app.viral-loops.com',
+    'https://res.cloudinary.com/vrlps',
   ]);
 
   const customDirectives = {
