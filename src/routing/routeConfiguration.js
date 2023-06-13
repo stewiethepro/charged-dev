@@ -167,14 +167,6 @@ const routeConfiguration = (layoutConfig) => {
       authPage: 'LoginPage',
       component: ProfileSettingsPage,
     },
-    {
-      path: '/referrals',
-      name: 'ReferralsPage',
-      auth: true,
-      authPage: 'LoginPage',
-      component: ReferralsPage,
-    },
-
     // Note: authenticating with IdP (e.g. Facebook) expects that /login path exists
     // so that in the error case users can be redirected back to the LoginPage
     // In case you change this, remember to update the route in server/api/auth/loginWithIdp.js
@@ -290,6 +282,13 @@ const routeConfiguration = (layoutConfig) => {
       authPage: 'LoginPage',
       component: PaymentMethodsPage,
       loadData: pageDataLoadingAPI.PaymentMethodsPage.loadData,
+    },
+    {
+      path: '/account/referrals',
+      name: 'ReferralsPage',
+      auth: true,
+      authPage: 'LoginPage',
+      component: ReferralsPage,
     },
     {
       path: '/terms-of-service',

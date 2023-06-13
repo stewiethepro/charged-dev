@@ -390,17 +390,17 @@
 }
 
 .currentPage {
-  color: var(--colorBlack);
+  color: var(--marketplaceColor);
   position: relative;
 
   & .menuItemBorder {
     width: 6px;
-    background-color: var(--colorBlack);
+    background-color: var(--marketplaceColor);
   }
 
   &:hover {
     & .menuItemBorder {
-      background-color: var(--colorBlack);
+      background-color: var(--marketplaceColor);
     }
   }
 }

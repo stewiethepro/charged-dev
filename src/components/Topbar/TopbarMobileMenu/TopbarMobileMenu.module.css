@@ -134,10 +134,10 @@
 }
 
 .currentPage {
-  color: var(--colorBlack);
+  color: var(--marketplaceColorDark);
 
   /* black left border */
-  border-left: 5px solid black;
+  border-left: 5px solid var(--marketplaceColor);
   margin-left: -24px;
   padding-left: 19px;
 }

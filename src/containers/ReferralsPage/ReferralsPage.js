@@ -52,7 +52,7 @@ export const ReferralsPageComponent = props => {
   }
 
   // Viral loops registration
-  const viralLoopsCampaignId = 'DdlqvbNBLN7j7whSMe3xtCjxsdE'
+  const viralLoopsCampaignId = 'BYZDtRdlZSQQCJ76iARzMvnXpEM'
 
   const viralLoopsUser = currentUser ? 
   {
