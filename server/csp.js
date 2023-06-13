@@ -148,6 +148,7 @@ module.exports = (reportUri, reportOnly) => {
     'https://uploads.au.intercomcdn.com', 
     'https://uploads.intercomusercontent.com',
     'https://app.viral-loops.com/',
+    'https://res.cloudinary.com/vrlps/',
   ]);
   const customChildSrc = childSrc.concat([
     'https://intercom-sheets.com',
