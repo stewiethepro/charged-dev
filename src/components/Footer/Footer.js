@@ -93,14 +93,9 @@ const Footer = props => {
                   </NamedLink>
                 </li>
                 <li className={css.listItem}>
-                  <NamedLink name="SearchPage" className={css.link}>
-                    <FormattedMessage id="Footer.toSearchPage" />
-                  </NamedLink>
-                </li>
-                <li className={css.listItem}>
-                  <NamedLink name="NewListingPage" className={css.link}>
-                    <FormattedMessage id="Footer.toNewListingPage" />
-                  </NamedLink>
+                  <ExternalLink key="HelpCentrePage" href={siteHelpCentrePage} className={css.link}>
+                    <FormattedMessage id="Footer.toHelpCentrePage" />
+                  </ExternalLink>
                 </li>
                 <li className={css.listItem}>
                   <ExternalLink key="TallyChargerType" href={tallyChargerTypeRedirectLink} className={css.link}>
@@ -112,10 +107,24 @@ const Footer = props => {
                     <FormattedMessage id="Footer.toTallyCalculator" />
                   </ExternalLink>
                 </li>
+              </ul>
+            </div>
+            <div className={css.actionLinks}>
+              <ul className={css.list}>
                 <li className={css.listItem}>
-                  <ExternalLink key="HelpCentrePage" href={siteHelpCentrePage} className={css.link}>
-                    <FormattedMessage id="Footer.toHelpCentrePage" />
-                  </ExternalLink>
+                  <NamedLink name="SearchPage" className={css.link}>
+                    <FormattedMessage id="Footer.toSearchPage" />
+                  </NamedLink>
+                </li>
+                <li className={css.listItem}>
+                  <NamedLink name="NewListingPage" className={css.link}>
+                    <FormattedMessage id="Footer.toNewListingPage" />
+                  </NamedLink>
+                </li>
+                <li className={css.listItem}>
+                  <NamedLink name="ReferralsPage" className={css.link}>
+                    <FormattedMessage id="Footer.toReferralsPage" />
+                  </NamedLink>
                 </li>
               </ul>
             </div>

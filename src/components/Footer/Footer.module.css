@@ -195,8 +195,20 @@
 }
 
 /* Desktop and Mobile: searches - first column */
-.searches {
+.actionLinks {
   order: 3;
+  flex-basis: 165px;
+  margin-right: 24px;
+  margin-bottom: 24px;
+
+  @media (--viewportMedium) {
+    margin-right: 12px;
+  }
+}
+
+/* Desktop and Mobile: searches - first column */
+.searches {
+  order: 4;
   flex-basis: 165px;
   margin-right: 24px;
   margin-bottom: 24px;
@@ -209,7 +221,7 @@
 /* Desktop and Mobile: searches - second column */
 /* This is not always visible */
 .searchesExtra {
-  order: 4;
+  order: 5;
   flex-basis: 165px;
   margin-right: 24px;
   margin-bottom: 24px;
@@ -222,7 +234,7 @@
 /* Desktop: extra links (social media links and legal links) */
 .extraLinks {
   flex-shrink: 0;
-  order: 5;
+  order: 6;
   display: none;
   flex-basis: 109px;
   margin-right: 24px;
