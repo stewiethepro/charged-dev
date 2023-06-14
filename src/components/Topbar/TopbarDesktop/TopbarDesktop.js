@@ -83,6 +83,14 @@ const TopbarDesktop = props => {
     </NamedLink>
   ) : null;
 
+  const referralsLink = authenticatedOnClientSide ? (
+    <NamedLink className={css.referralsLink} name="ReferralsPage">
+      <span className={css.referrals}>
+        <FormattedMessage id="TopbarDesktop.referrals" />&#128176;
+      </span>
+    </NamedLink>
+  ) : null;
+
   const currentPageClass = page => {
     const isAccountSettingsPage =
       page === 'AccountSettingsPage' && ACCOUNT_SETTINGS_PAGES.includes(currentPage);
@@ -161,6 +169,7 @@ const TopbarDesktop = props => {
           <FormattedMessage id="TopbarDesktop.createListing" />
         </span>
       </NamedLink>
+      {referralsLink}
       {inboxLink}
       {manageListings}
       {profileMenu}
