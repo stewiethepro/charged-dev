@@ -8,6 +8,7 @@ import { twitterPageURL } from '../../util/urlHelpers';
 import {
   IconSocialMediaFacebook,
   IconSocialMediaInstagram,
+  IconSocialMediaLinkedin,
   IconSocialMediaTwitter,
   Logo,
   ExternalLink,
@@ -17,16 +18,23 @@ import {
 import css from './Footer.module.css';
 
 const renderSocialMediaLinks = (intl, config) => {
-  const { siteFacebookPage, siteInstagramPage, siteTwitterHandle } = config;
+  const { siteFacebookPage, siteInstagramPage, siteLinkedinPage, siteTwitterHandle } = config;
   const siteTwitterPage = twitterPageURL(siteTwitterHandle);
 
   const goToFb = intl.formatMessage({ id: 'Footer.goToFacebook' });
   const goToInsta = intl.formatMessage({ id: 'Footer.goToInstagram' });
+  const goToLinkedin = intl.formatMessage({ id: 'Footer.goToLinkedin' });
   const goToTwitter = intl.formatMessage({ id: 'Footer.goToTwitter' });
 
   const fbLink = siteFacebookPage ? (
     <ExternalLink key="linkToFacebook" href={siteFacebookPage} className={css.icon} title={goToFb}>
       <IconSocialMediaFacebook />
+    </ExternalLink>
+  ) : null;
+  
+  const linkedinLink = siteLinkedinPage ? (
+    <ExternalLink key="linkToLinkedin" href={siteLinkedinPage} className={css.icon} title={goToLinkedin}>
+      <IconSocialMediaLinkedin />
     </ExternalLink>
   ) : null;
 
@@ -41,7 +49,7 @@ const renderSocialMediaLinks = (intl, config) => {
     </ExternalLink>
   ) : null;
 
-  const instragramLink = siteInstagramPage ? (
+  const instagramLink = siteInstagramPage ? (
     <ExternalLink
       key="linkToInstagram"
       href={siteInstagramPage}
@@ -51,7 +59,7 @@ const renderSocialMediaLinks = (intl, config) => {
       <IconSocialMediaInstagram />
     </ExternalLink>
   ) : null;
-  return [fbLink, twitterLink, instragramLink].filter(v => v != null);
+  return [fbLink, linkedinLink, twitterLink, instagramLink].filter(v => v != null);
 };
 
 const Footer = props => {

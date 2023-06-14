@@ -79,11 +79,13 @@ const defaultConfig = {
   // Optional
   // Online presence of the same organization:
   // Facebook page is used in SEO schema (http://schema.org/Organization)
-  siteFacebookPage: null, // e.g. '@sharetribe',
+  siteFacebookPage: 'https://www.facebook.com/getchargednz', // e.g. 'https://www.facebook.com/Sharetribe/',
   // Instagram page is used in SEO schema (http://schema.org/Organization)
   siteInstagramPage: null, // e.g. 'https://www.instagram.com/sharetribe/',
+  // Linkedin page
+  siteLinkedinPage: 'https://www.linkedin.com/company/getchargednz/', //
   // Twitter handle is needed in meta tags (twitter:site). Start it with '@' character
-  siteTwitterHandle: null, // e.g. 'https://www.facebook.com/Sharetribe/',
+  siteTwitterHandle: null, // e.g. '@sharetribe',
   // Help centre
   siteHelpCentrePage: 'https://help.getcharged.xyz/en/', 
 
