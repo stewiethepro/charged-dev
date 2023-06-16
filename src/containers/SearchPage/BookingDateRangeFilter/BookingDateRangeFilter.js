@@ -138,6 +138,8 @@ export class BookingDateRangeFilterComponent extends Component {
         ? { onClear: () => this.plainControllerRef.onReset(null, null) }
         : {};
 
+    console.log('minimumNights: ', minimumNights);
+
     return showAsPopup ? (
       <FilterPopup
         className={className}

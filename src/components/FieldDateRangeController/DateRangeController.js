@@ -3,7 +3,7 @@ import { string } from 'prop-types';
 import { DayPickerRangeController } from 'react-dates';
 import classNames from 'classnames';
 import moment from 'moment';
-import { START_DATE } from '../../util/dates';
+import { START_DATE, END_DATE } from '../../util/dates';
 
 import { IconArrowHead } from '../../components';
 import css from './DateRangeController.module.css';
@@ -84,14 +84,20 @@ class DateRangeController extends Component {
 
   onDatesChange(values) {
     const { startDate, endDate } = values;
+    console.log("startDate: ", startDate);
+    console.log("endDate: ", endDate);
 
     const start = startDate ? startDate.toDate() : null;
-    const end = endDate ? endDate.toDate() : null;
+    // const end = endDate ? endDate.toDate() : null;
+    const end = endDate ? endDate.toDate() : start ? start : null;
 
     this.setState({ startDate, endDate });
 
-    if (startDate && endDate) {
+    console.log('this: ', this);
+
+    if (startDate) {
       this.props.onChange({ startDate: start, endDate: end });
+      console.log("start and end date: ", this.props);
     }
   }
 
@@ -143,10 +149,16 @@ class DateRangeController extends Component {
 
     const isSelected = startDateFromState && endDateFromState;
 
+    console.log("is selected: ", isSelected);
+
     // Value given by Final Form reflects url params and is valid if both dates are set.
     // If only one date is selected state should be used to get the correct date.
     const startDate = isSelected ? startDateFromForm : startDateFromState;
-    const endDate = isSelected ? endDateFromForm : endDateFromState;
+    // const endDate = isSelected ? endDateFromForm : endDateFromState;
+    const endDate = isSelected ? endDateFromForm : startDate ? startDate : endDateFromState;
+
+    console.log('finalStartDate: ', startDate);
+    console.log('finalEndDate: ', endDate);
 
     return (
       <div className={classes}>

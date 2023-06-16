@@ -26,7 +26,7 @@ export const dateRangeFilter = {
   // Should the entire date range be available, or just part of it
   // Note: Since we don't enforce location search for dates filtering,
   //       we don't use API's 'time-full' in actual queries. It would require time zone info.
-  availability: 'time-full', // time-partial
+  availability: 'time-partial', // time-partial
   // Options: day/night. This affects counting and whether single day picking is possible.
   dateRangeMode: 'day',
 };
@@ -35,8 +35,8 @@ export const priceFilter = {
   schemaType: 'price',
   // Note: unlike most prices this is not handled in subunits
   min: 0,
-  max: 1000,
-  step: 5,
+  max: 20,
+  step: 1,
 };
 // // This is not in use by default.
 // // Needs more thinking how it should work together with main search.

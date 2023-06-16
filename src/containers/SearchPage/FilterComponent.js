@@ -72,7 +72,6 @@ const FilterComponent = props => {
     case 'dates': {
       const { dateRangeMode } = config;
       const isNightlyMode = dateRangeMode === 'night';
-      console.log('isNightlyMode: ', isNightlyMode);
       return (
         <BookingDateRangeFilter
           id={componentId}
