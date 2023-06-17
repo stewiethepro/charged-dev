@@ -494,34 +494,6 @@ export const AuthenticationPageComponent = props => {
 
   }
 
-  // async function participateInViralLoops(user) {
-
-  //   console.log('flumpy');
-
-  //   // Get campaign by ID
-  //   const campaign = await ViralLoops.getCampaign(viralLoopsCampaignId);
-  //   console.log("campaign: ", campaign);
-
-  //   const referrerResponse = await campaign.setReferrer(referrer)
-  //   console.log("referrerResponse: ", referrerResponse);
-
-  //   // Identify user in campaign
-  //   console.log('[Viral Loops] Identifying...', user);
-  //   const response = await campaign.identify(user)
-  //     .catch(error => {
-  //       console.error("[Viral Loops] Participation error", error);
-  //     });
- 
-  //   // Log response
-  //   if (response.isNew) {
-  //        console.log('[Viral Loops] ✅ Participation completed!');
-  //        console.log('VL response: ', response);
-  //   } else {
-  //        console.log('[Viral Loops] ✅ Identified participant!');
-  //        console.log('VL response: ', response);
-  //   }
-  // }
-
   if (currentUser) {
     // User object with first name, last name, and email
     const viralLoopsUser = {
