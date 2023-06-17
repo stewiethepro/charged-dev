@@ -564,7 +564,7 @@ class EditListingWizard extends Component {
                   <FormattedMessage id="EditListingWizard.payoutModalInfo" />
                 </p>
                 {/* Stripe verification status tracker */}
-                <p className={css.modalMessage}>
+                {/* <p className={css.modalMessage}>
                   Verification steps completed: <span className={stripeVerificationComplete ? css.stepsSuccess : css.stepsFail}>{stripeAccount ? detailsSubmitted ? !showVerificationNeeded ? '3/3' : '2/3' : '1/3' : '0/3'}</span>
                 </p>
                 <p className={css.itemStatus}>
@@ -604,7 +604,7 @@ class EditListingWizard extends Component {
                     {stripeAccount && !showVerificationNeeded ? <IconCheckBadge/> : <IconExclamationMark/>}
                     </span>
                   </li>
-                </ul>
+                </ul> */}
                 <StripeConnectAccountForm
                   disabled={formDisabled}
                   inProgress={payoutDetailsSaveInProgress}

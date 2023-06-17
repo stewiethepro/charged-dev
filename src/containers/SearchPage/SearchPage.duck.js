@@ -164,6 +164,8 @@ export const searchListings = (searchParams, config) => (dispatch, getState, sdk
       startDate.getTime() >= possibleStartDate.getTime() &&
       startDate.getTime() <= endDate.getTime();
 
+    console.log('isEntireRangeAvailable: ', isEntireRangeAvailable);
+
     const dayCount = isEntireRangeAvailable ? daysBetween(startDate, endDate) : 1;
     const day = 1440;
     const hour = 60;
