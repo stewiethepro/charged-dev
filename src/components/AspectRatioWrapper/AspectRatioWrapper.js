@@ -14,7 +14,14 @@ const AspectRatioWrapper = props => {
   return (
     <div className={classes} {...rest}>
       <div className={css.aspectPadding} style={{ paddingBottom }}>
-        <div className={css.aspectBox}>{children}</div>
+        <div className={css.aspectBox}>
+          {/* <div className={css.chipContainer}>
+            <p className={css.chipText}>
+              Test
+            </p>
+          </div> */}
+          {children}
+        </div>
       </div>
     </div>
   );
