@@ -125,6 +125,8 @@ module.exports = (reportUri, reportOnly) => {
     'https://ajax.googleapis.com/ajax/libs/',
     'https://cdnjs.cloudflare.com/ajax/libs/',
     'https://res.cloudinary.com/vrlps/',
+    'https://getcharged.herokuapp.com/static/scripts/mapbox/',
+    'https://*.facebook.net'
   ]);
   const customConnectSrc = connectSrc.concat([
     'https://via.intercom.io',
@@ -149,6 +151,7 @@ module.exports = (reportUri, reportOnly) => {
     'https://uploads.intercomusercontent.com',
     'https://app.viral-loops.com/',
     'https://res.cloudinary.com/vrlps/',
+    'https://www.facebook.com',
   ]);
   const customChildSrc = childSrc.concat([
     'https://intercom-sheets.com',
@@ -166,9 +169,11 @@ module.exports = (reportUri, reportOnly) => {
     'https://api-iam.intercom.io',
     'https://api-iam.eu.intercom.io',
     'https://api-iam.au.intercom.io',
+    'https://www.facebook.com',
   ]);
   const customFrameSrc = frameSrc.concat([
     'https://intercom-sheets.com',
+    'https://www.facebook.com'
   ]);
   const customMediaSrc = mediaSrc.concat([
     'https://js.intercomcdn.com',
@@ -198,6 +203,7 @@ module.exports = (reportUri, reportOnly) => {
     'https://*.intercom-attachments-9.com',
     'https://static.intercomassets.eu',
     'https://static.au.intercomassets.com',
+    'https://www.facebook.com'
   ]);
   const customStyleSrc = styleSrc.concat([
     'unsafe-inline',
