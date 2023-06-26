@@ -8,9 +8,9 @@ import { useConfiguration } from '../../context/configurationContext';
 import DateRangeController from './DateRangeController';
 
 const component = props => {
-  const { input, controllerRef, ...rest } = props;
+  const { input, controllerRef, isAvailableNow, ...rest } = props;
   const { type, checked, ...restOfInput } = input;
-  return <DateRangeController ref={controllerRef} {...restOfInput} {...rest} />;
+  return <DateRangeController ref={controllerRef} isAvailableNow={isAvailableNow} {...restOfInput} {...rest} />;
 };
 
 const FieldDateRangeController = props => {

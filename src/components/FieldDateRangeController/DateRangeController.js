@@ -136,8 +136,11 @@ class DateRangeController extends Component {
       meta,
       children,
       render,
+      isAvailableNow,
       ...controllerProps
     } = this.props;
+
+    console.log('isAvailableNowMadeIt: ', isAvailableNow);
 
     const classes = classNames(rootClassName || css.inputRoot, className);
 
