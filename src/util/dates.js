@@ -958,3 +958,17 @@ export const findNextCustomBoundary = (
     .startOfDuration(firstSlotMinutes, timeUnit)
     .toDate();
 };
+
+
+/**
+ * @returns Moment instance
+ */
+
+export const getNextHour = () => {
+  const startDate = moment().format('YYYY-MM-DDTHH:mm:ss')
+  const endDate = moment(startDate).add(1,'hours').format('YYYY-MM-DDTHH:mm:ss')
+ return {
+  start: startDate,
+  end: endDate
+  }
+};

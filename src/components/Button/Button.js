@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { bool, node, string } from 'prop-types';
+import { bool, func, node, string } from 'prop-types';
 import classNames from 'classnames';
 
 import { useRouteConfiguration } from '../../context/routeConfigurationContext';
@@ -131,7 +131,6 @@ Button.propTypes = {
   ready: bool,
   disabled: bool,
   enforcePagePreloadFor: string,
-
   children: node,
 };
 

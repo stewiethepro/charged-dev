@@ -7,6 +7,7 @@ import SelectMultipleFilter from './SelectMultipleFilter/SelectMultipleFilter';
 import BookingDateRangeFilter from './BookingDateRangeFilter/BookingDateRangeFilter';
 import KeywordFilter from './KeywordFilter/KeywordFilter';
 import PriceFilter from './PriceFilter/PriceFilter';
+import { PrimaryButton } from '../../components';
 
 // Helper: get enumOptions in a format that works as query parameter
 const createFilterOptions = options => options.map(o => ({ key: `${o.option}`, label: o.label }));
@@ -31,12 +32,16 @@ const FilterComponent = props => {
   // - default filter config
   // They both have 'key' and 'schemaType' included.
   const { key, schemaType } = config;
-  const { liveEdit, showAsPopup } = rest;
+  const { liveEdit, showAsPopup, isAvailableNow, setIsAvailableNow } = rest;
 
   const useHistoryPush = liveEdit || showAsPopup;
   const prefix = idPrefix || 'SearchPage';
   const componentId = `${prefix}.${key.toLowerCase()}`;
   const name = key.replace(/\s+/g, '-').toLowerCase();
+
+  const toggleIsAvailableNow = (isAvailable, useHistoryPush) => {
+    setIsAvailableNow(isAvailable, useHistoryPush);
+  };
 
   // Default filters: price, keywords, dates
   switch (key) {
@@ -73,6 +78,7 @@ const FilterComponent = props => {
       const { dateRangeMode } = config;
       const isNightlyMode = dateRangeMode === 'night';
       return (
+        <>
         <BookingDateRangeFilter
           id={componentId}
           label={intl.formatMessage({ id: 'FilterComponent.datesLabel' })}
@@ -80,8 +86,27 @@ const FilterComponent = props => {
           initialValues={initialValues([key], liveEdit)}
           onSubmit={getHandleChangedValueFn(useHistoryPush)}
           minimumNights={isNightlyMode ? 1 : 0}
+          isAvailableNow={isAvailableNow}
           {...rest}
         />
+        {isAvailableNow ? 
+          <PrimaryButton 
+            style={{position: 'relative', display: 'inline-block', width: 'auto', height: 'auto', minHeight: 0, padding: 'var(--marketplaceButtonSmallDesktopPadding)', fontWeight: 'var(--fontWeightMedium)', fontSize: '13px', lineHeight: '20px', letterSpacing: '0.2px', backgroundColor: 'var(--marketplaceColor)', color: 'var(--colorWhite)', border: '1px solid var(--colorGrey100)', borderRadius: 'var(--borderRadiusMedium)', transition: 'all var(--transitionStyleButton)' }} 
+            type="submit"
+            onClick={() => toggleIsAvailableNow(isAvailableNow, useHistoryPush)}
+          >
+            Available now
+          </PrimaryButton>
+          : 
+          <PrimaryButton 
+            style={{position: 'relative', display: 'inline-block', width: 'auto', height: 'auto', minHeight: 0, padding: 'var(--marketplaceButtonSmallDesktopPadding)', fontWeight: 'var(--fontWeightMedium)', fontSize: '13px', lineHeight: '20px', letterSpacing: '0.2px', backgroundColor: 'var(--colorWhite)', color: 'inherit', border: '1px solid var(--colorGrey100)', borderRadius: 'var(--borderRadiusMedium)', transition: 'all var(--transitionStyleButton)' }} 
+            type="submit"
+            onClick={() => toggleIsAvailableNow(isAvailableNow, useHistoryPush)}
+          >
+            Available now
+          </PrimaryButton>
+        }
+        </>
       );
     }
   }

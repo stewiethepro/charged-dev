@@ -18,6 +18,7 @@ import {
   isOriginInUse,
   getQueryParamNames,
 } from '../../util/search';
+import { getNextHour } from '../../util/dates';
 import { parse } from '../../util/urlHelpers';
 import { propTypes } from '../../util/types';
 import { getListingsById } from '../../ducks/marketplaceData.duck';
@@ -65,6 +66,7 @@ export class SearchPageComponent extends Component {
       isMobileModalOpen: false,
       currentQueryParams: validUrlQueryParamsFromProps(props),
       isSecondaryFiltersOpen: false,
+      isAvailableNow: false,
     };
 
     this.onMapMoveEnd = debounce(this.onMapMoveEnd.bind(this), SEARCH_WITH_MAP_DEBOUNCE);
@@ -76,10 +78,14 @@ export class SearchPageComponent extends Component {
     this.cancelFilters = this.cancelFilters.bind(this);
     this.resetAll = this.resetAll.bind(this);
     this.getHandleChangedValueFn = this.getHandleChangedValueFn.bind(this);
+    this.setIsAvailableNow = this.setIsAvailableNow.bind(this)
 
     // SortBy
     this.handleSortBy = this.handleSortBy.bind(this);
+
+    console.log(this.state);
   }
+
 
   // Callback to determine if new search is needed
   // when map is moved by user or viewport has changed
@@ -149,7 +155,7 @@ export class SearchPageComponent extends Component {
       defaultFiltersConfig,
       sortConfig
     );
-
+  
     history.push(createResourceLocatorString('SearchPage', routeConfiguration, {}, search));
   }
 
@@ -176,7 +182,9 @@ export class SearchPageComponent extends Component {
   }
 
   getHandleChangedValueFn(useHistoryPush) {
+    console.log('gethandlechangedvaluefn called');
     const { history, routeConfiguration, config } = this.props;
+    const isAvailableNow = this.state.isAvailableNow
     const { listingFields: listingFieldsConfig } = config?.listing || {};
     const { defaultFilters: defaultFiltersConfig, sortConfig } = config?.search || {};
 
@@ -204,7 +212,10 @@ export class SearchPageComponent extends Component {
       };
 
       const callback = () => {
+        console.log("callback called");
         if (useHistoryPush) {
+          console.log("historypush is true");
+
           const searchParams = this.state.currentQueryParams;
           const search = cleanSearchFromConflictingParams(
             searchParams,
@@ -212,12 +223,26 @@ export class SearchPageComponent extends Component {
             defaultFiltersConfig,
             sortConfig
           );
+
+          if (isAvailableNow) {
+            const nextHour = getNextHour()  
+            search.dates = nextHour.start + ',' + nextHour.end
+            console.log('search: ', search); 
+          }
+
           history.push(createResourceLocatorString('SearchPage', routeConfiguration, {}, search));
         }
       };
 
       this.setState(updater, callback);
     };
+  }
+
+  setIsAvailableNow(isAvailableNow, useHistoryPush) {
+    console.log('setisavailable called');
+    console.log('setisavailable - isAvailableNow: ', isAvailableNow);
+    this.setState({ isAvailableNow: !isAvailableNow })
+    this.getHandleChangedValueFn(useHistoryPush)
   }
 
   handleSortBy(urlParam, values) {
@@ -248,6 +273,8 @@ export class SearchPageComponent extends Component {
       config,
       currentUser,
     } = this.props;
+
+    const isAvailableNow = this.state.isAvailableNow;
 
     const { listingFields: listingFieldsConfig } = config?.listing || {};
     const { defaultFilters: defaultFiltersConfig, sortConfig } = config?.search || {};
@@ -461,6 +488,7 @@ export class SearchPageComponent extends Component {
                     intl={intl}
                     liveEdit
                     showAsPopup={false}
+                    onAvailableNowClick={() => this.setState({ isAvailableNow: true })}
                   />
                 );
               })}
@@ -489,10 +517,15 @@ export class SearchPageComponent extends Component {
                       intl={intl}
                       showAsPopup
                       contentPlacementOffset={FILTER_DROPDOWN_OFFSET}
+                      isAvailableNow={isAvailableNow}
+                      setIsAvailableNow={this.setIsAvailableNow}
                     />
                   );
                 })}
               </SearchFiltersPrimary>
+              {isAvailableNow ? <h1>AVAILABLE NOW IS TRUE</h1> 
+              : null
+              }
             </MainPanelHeader>
             {isSecondaryFiltersOpen ? (
               <div className={classNames(css.searchFiltersPanel)}>
@@ -516,6 +549,7 @@ export class SearchPageComponent extends Component {
                         getHandleChangedValueFn={this.getHandleChangedValueFn}
                         intl={intl}
                         showAsPopup={false}
+                        onAvailableNowClick={() => this.setState({ isAvailableNow: true }) && console.log('state: ', this.state)}
                       />
                     );
                   })}

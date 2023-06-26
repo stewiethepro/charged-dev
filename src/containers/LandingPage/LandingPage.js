@@ -14,7 +14,6 @@ import { ASSET_NAME } from './LandingPage.duck';
 import SectionFeaturesLandingHero from '../PageBuilder/SectionBuilder/SectionFeaturesLandingHero';
 import BlockDefaultLandingHero from '../PageBuilder/BlockBuilder/BlockDefaultLandingHero';
 
-
 export const LandingPageComponent = props => {
   const { pageAssetsData, inProgress, error, currentUser } = props;
 

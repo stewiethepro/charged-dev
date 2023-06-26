@@ -67,6 +67,7 @@ export class BookingDateRangeFilterComponent extends Component {
       label,
       intl,
       minimumNights,
+      isAvailableNow,
       ...rest
     } = this.props;
 
@@ -159,6 +160,7 @@ export class BookingDateRangeFilterComponent extends Component {
         <FieldDateRangeController
           name="dates"
           minimumNights={minimumNights}
+          isAvailableNow={isAvailableNow}
           controllerRef={node => {
             this.popupControllerRef = node;
           }}
@@ -225,6 +227,7 @@ BookingDateRangeFilterComponent.defaultProps = {
   minimumNights: 0,
   initialValues: null,
   contentPlacementOffset: 0,
+  isAvailableNow: false,
 };
 
 BookingDateRangeFilterComponent.propTypes = {
@@ -239,6 +242,7 @@ BookingDateRangeFilterComponent.propTypes = {
   minimumNights: number,
   initialValues: object,
   contentPlacementOffset: number,
+  isAvailableNow: bool,
 
   // form injectIntl
   intl: intlShape.isRequired,
