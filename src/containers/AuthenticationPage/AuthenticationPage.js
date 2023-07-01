@@ -452,7 +452,7 @@ export const AuthenticationPageComponent = props => {
   }
 
   // Viral loops registration
-  const viralLoopsCampaignId = 'sf7SLR20yr5Q591bjZeZDA3S0PA'
+  const viralLoopsCampaignId = 'C9PrByKDsbcmsCApLi8gt5zUjMw'
   
   const useQuery = () => new URLSearchParams(useLocation().search);
   const query = useQuery();
