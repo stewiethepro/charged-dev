@@ -391,6 +391,8 @@ export const AuthenticationPageComponent = props => {
   const authinfoFrom = authInfo?.from || null;
   const from = locationFrom ? locationFrom : authinfoFrom ? authinfoFrom : null;
 
+  console.log("location.state: ", location.state);
+
   const user = ensureCurrentUser(currentUser);
   const currentUserLoaded = !!user.id;
   const isLogin = tab === 'login';
