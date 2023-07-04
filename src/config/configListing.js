@@ -56,11 +56,8 @@ export const listingFields = [
       { option: 'type-2', label: 'Type 2' },
       { option: 'tesla', label: 'Tesla' },
       { option: 'commando', label: 'Commando' },
-      { option: 'three-phase', label: 'Three Phase' },
       { option: 'chademo', label: 'ChadeMo' },
       { option: 'ccs-sae', label: 'CCS/SAE' },
-      { option: 'wall-plug', label: 'Wall Plug' },
-      { option: 'caravan-mains', label: 'Caravan Mains' },
     ],
     filterConfig: {
       indexForSearch: true,
